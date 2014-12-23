@@ -54,6 +54,12 @@ function is_valid_site_lang()
 	return false;
 }
 
+function get_site_langs()
+{
+	require(APPPATH.'/app/config/config.php');
+	return $config['site_languages'];
+}
+
 function redirect($uri = '', $method = 'location', $http_response_code = 302)
 {
 	if ( ! preg_match('#^https?://#i', $uri))
