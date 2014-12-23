@@ -19,14 +19,9 @@ class Xlsimportadapter
 			$cols = $excel->colcount($sheet_index=0);
 			for($row = 2; $row <= $rows; $row++)
 			{
-				if ($cols == 7)
+				for($col = 1; $col <= $cols; $col++)
 				{
-					for($col = 1; $col <= $cols; $col++)
-					{
-						$users[$row][$params[$col]] = $excel->val($row,$col);
-						$users[$row]['user_vhost'] = explode(',', $excel->val($row,7));
-						$users[$row]['user_group'] = '';
-					}
+					$users[$row][$params[$col]] = $excel->val($row,$col);
 				}
 			}
 			$this->userimport = new userimport();

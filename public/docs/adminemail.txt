@@ -3,7 +3,7 @@ Bonjour %s %s,
 Votre compte admin pour les sites staging été créé
 Votre identifiant est : %s
 Votre mot de passe est : %s
-Le lien de l'application : http://auth.tgiprojects.com/
+Le lien de l'application : http://lenomdevotrecompagnie.com/
 
 Merci.
 
@@ -14,6 +14,6 @@ Hello %s %s
 Your admin account for staging site was created 
 Your username is:%s 
 Your password is:%s 
-The application link: http://auth.tgiprojects.com/ 
+The application link: http://yourcompanyname.com/ 
 
 Thank you.
