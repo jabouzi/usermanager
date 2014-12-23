@@ -1,7 +1,9 @@
 <div id="header">
 <?php
 echo '<ul>';
-echo '<li class="first-item"><a href="/'.strtolower(lang('site.lang')).'">'.lang('site.lang').'</a>';
+echo '<li class="first-item">';
+display_languages();
+echo '</li>';
 if (islogged())
 {
 	$links = array('/'=> lang('title.accounts'),
