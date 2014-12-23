@@ -31,11 +31,6 @@ class Userimport
 			$errors_count += $this->checkitem($userdata, $param, $key);
 		}
 
-		if (!item($userdata, 'user_vhost') || !is_array($userdata['user_vhost']))
-		{
-			$errors_count++;
-			$this->set_message('user :'.$userdata['user_name'].' '.lang('account.user.vhosts.empty').'<br />');
-		}
 		if ($this->usermodel->user_name_exists($userdata['user_name']))
 		{
 			$errors_count++;

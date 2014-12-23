@@ -18,7 +18,6 @@ class Xmlimportadapter
 			if (count((array)$usr_info) == 7)
 			{
 				$users[$index] = (array)$usr_info;
-				$users[$index]['user_vhost'] = explode(',', $users[$index]['user_vhost']);
 				$index++;
 			}
 		}
