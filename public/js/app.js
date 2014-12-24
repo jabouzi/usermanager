@@ -19,6 +19,11 @@ $(document).ready(function() {
 	{
 		validate_from($(this).closest("form").attr('id'));
 	});
+	
+	$("#user_langs").change(function() 
+	{
+		window.location.href = '/'+$(this).val();
+	});
 });
 
 function submit_form() {

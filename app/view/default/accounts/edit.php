@@ -33,10 +33,6 @@
 		<input type="text" name="user_last_name" id="user_last_name" value="<?php echo print_post_text('user_last_name', $user->get_user_last_name()); ?>" data-validate="required" />
 	</div>
 	<div class="row">
-		<label><?php echo lang('form.hosts'); ?>:</label>
-		<?php get_projects($user->get_user_vhost()); ?>
-	</div>
-	<div class="row">
 		<label for="user_password"><?php echo lang('form.password'); ?>:</label>
 		<input type="password" name="user_password" id="user_password" value="<?php echo print_post_text('user_password'); ?>" autocomplete="off" />
 	</div>
