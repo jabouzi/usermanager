@@ -2,7 +2,7 @@
 
 $config['default'] = 'application';
 $config['lang'] = 'fr';
-if (strstr($_SERVER['HTTP_HOST'], 'tgiprojects.com'))
+if (strstr($_SERVER['HTTP_HOST'], 'jabouzi.com'))
 {
 	$config['database'] = 'jabouzic_usermanager';
 	$config['username'] = 'jabouzic_db';
