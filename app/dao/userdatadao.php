@@ -16,13 +16,12 @@ class Userdatadao {
 		$args = array(
 			':user_name' => $user->get_user_name(),
 			':password' => $user->get_user_password(),
-			':group' => $user->get_user_group(),
 			':email' => $user->get_user_email(),
 			':first_name' => $user->get_user_first_name(),
 			':last_name' => $user->get_user_last_name(),
 			':pwd' => $this->encrypt->encrypt($user->get_user_password()),
 		);
-		$query = "INSERT INTO user_info VALUES (:user_name, encrypt(:password), :group, :first_name, :last_name, :email, :pwd)";
+		$query = "INSERT INTO user_info VALUES (:user_name, encrypt(:password), :first_name, :last_name, :email, :pwd)";
 		$insert = $this->db->query($query, $args);
 		return $insert;
 	}
@@ -32,7 +31,6 @@ class Userdatadao {
 		$password = '';
 		$args = array(
 			':user_name' => $user->get_user_name(),
-			':group' => $user->get_user_group(),
 			':email' => $user->get_user_email(),
 			':first_name' => $user->get_user_first_name(),
 			':last_name' => $user->get_user_last_name(),
@@ -44,7 +42,7 @@ class Userdatadao {
 			$password = ', user_password = encrypt(:password), user_pwd = :pwd';
 		}
 		$query = "UPDATE user_info SET
-				user_group = :group, user_email = :email, user_first_name = :first_name, user_last_name = :last_name {$password}
+				user_email = :email, user_first_name = :first_name, user_last_name = :last_name {$password}
 				WHERE user_name = :user_name";
 		$update = $this->db->query($query, $args);
 		return $update;
@@ -52,7 +50,6 @@ class Userdatadao {
 
 	public function delete_user($user_name)
 	{
-		$delete = $this->delete_vhost($user_name);
 		$args = array(':user_name' => $user_name);
 		$query = "DELETE FROM user_info WHERE user_name = :user_name";
 		$delete += $this->db->query($query, $args);

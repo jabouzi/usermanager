@@ -18,12 +18,10 @@ class Usermodel extends Model
 
 	public function add_user($userdata)
 	{
-		$userdata['user_vhost'] = adjust_vhosts($userdata['user_vhost']);
 		$builder = new userdatabuilder($userdata);
 		$builder->build();
 		$user = $builder->getUser();
 		$this->userdatadao->insert_user($user);
-		$this->userdatadao->insert_vhost($user);
 		$this->cache->delete('select_data_'.$userdata['user_name']);
 		$this->cache->delete('select_data_all');
 		$this->log->save('ADD USER', $userdata);
@@ -31,12 +29,10 @@ class Usermodel extends Model
 
 	public function update_user($userdata)
 	{
-		$userdata['user_vhost'] = adjust_vhosts($userdata['user_vhost']);
 		$builder = new userdatabuilder($userdata);
 		$builder->build();
 		$user = $builder->getUser();
 		$this->userdatadao->update_user($user);
-		$this->userdatadao->update_vhost($user);
 		$this->cache->delete('select_data_'.$userdata['user_name']);
 		$this->cache->delete('select_data_all');
 		$this->log->save('UPDATE USER', $userdata);
@@ -68,7 +64,6 @@ class Usermodel extends Model
 		$results = $this->userdatadao->select_all();
 		foreach($results as $result)
 		{
-			$result['user_vhost'] = array();
 			$builder = new userdatabuilder($result);
 			$builder->build();
 			$users[] = $builder->getUser();
