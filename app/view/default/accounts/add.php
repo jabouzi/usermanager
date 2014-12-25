@@ -1,9 +1,6 @@
 <div class="row"><?php display_message(); ?></div>
 <h2><?php echo lang('title.add.account'); ?></h2>
 <form action="/<?php echo get_site_lang(); ?>/application/processadd" method="post" id="addform" name="addform">
-	<div class="row">
-        <input type="hidden" name="user_group" id="user_group" value=""/> 
-    </div>
     <div class="row">
 		<label for="user_name"><?php echo lang('form.username'); ?>:</label>
 		<input type="text" name="user_name" id="user_name" value="<?php echo print_post_text('user_name'); ?>" data-validate="required" />
