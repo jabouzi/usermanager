@@ -5,7 +5,6 @@ function compare_user_data($user1, $user2)
 	if (isempty($user1['user_password'])) $user2['user_password'] = '';
 	$a1 = $user1;
 	$b1 = $user2;
-	var_dump($a1, $b1, array_merge(array_diff_assoc($a1, $b1), array_diff_assoc($b1, $a1)));exit;
 	return array_merge(array_diff_assoc($a1, $b1), array_diff_assoc($b1, $a1));
 }
 

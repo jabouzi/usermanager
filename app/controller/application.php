@@ -89,21 +89,19 @@ class Application extends Controller
 
 	public function processedit()
 	{
-		var_dump($_POST);exit;
 		if ($_SESSION['user_edit']['user_name'] != $_POST['user_name'])
 		{
 			$_SESSION['message'] = lang('account.security.detected');
-			//redirect('application/edit/'.$_SESSION['user_edit']['user_name']);
+			redirect('application/edit/'.$_SESSION['user_edit']['user_name']);
 		}
 		else if ($this->usermodel->user_email_exists($_POST['user_email'], $_POST['user_name']))
 		{
 			$_SESSION['request'] = $_POST;
 			$_SESSION['message'] = lang('account.email.exists');
-			//redirect('application/edit/'.$_POST['user_name']);
+			redirect('application/edit/'.$_POST['user_name']);
 		}
 		else
 		{
-			var_dump(count(compare_user_data($_POST, $_SESSION['user_edit'])));exit;
 			if (count(compare_user_data($_POST, $_SESSION['user_edit'])))
 			{
 				$this->usermodel->update_user($_POST);
@@ -111,7 +109,7 @@ class Application extends Controller
 				$this->sendemail($user, self::EDIT);
 				$_SESSION['message'] = lang('account.user.updated');
 			}
-			//redirect('application/edit/'.$_POST['user_name']);
+			redirect('application/edit/'.$_POST['user_name']);
 		}
 	}
 

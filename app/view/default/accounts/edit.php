@@ -13,9 +13,6 @@
 </form>
 
 <form action="/<?php echo get_site_lang(); ?>/application/processedit" method="post" id="editform">	
-	<div class="row">
-        <input type="hidden" name="user_group" id="user_group" value=""/> 
-    </div>
     <div class="row">
 		<label for="user_name"><?php echo lang('form.username'); ?>:</label>
 		<input type="text" name="user_name" id="user_name" value="<?php echo print_post_text('user_name', $user->get_user_name()); ?>" readonly />
