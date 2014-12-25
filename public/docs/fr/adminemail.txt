@@ -6,14 +6,3 @@ Votre mot de passe est : %s
 Le lien de l'application : http://lenomdevotrecompagnie.com/
 
 Merci.
-
---------------------
-
-Hello %s %s 
-
-Your admin account for staging site was created 
-Your username is:%s 
-Your password is:%s 
-The application link: http://yourcompanyname.com/ 
-
-Thank you.
