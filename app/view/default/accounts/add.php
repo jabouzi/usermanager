@@ -24,10 +24,6 @@
 		<label for="last_name"><?php echo lang('form.lastname'); ?>:</label>
 		<input type="text" name="user_last_name" id="user_last_name" value="<?php echo print_post_text('user_last_name'); ?>" data-validate="required" />
 	</div>
-	<div class="row">
-		<label><?php echo lang('form.hosts'); ?>:</label>
-		<?php get_projects(); ?>
-	</div>
     <div>
 		<div class="row"><label for="submit"> </label>
 			<input id="submitadd" type="button" value="<?php echo lang('title.add.account'); ?>" class="submitbutton"/>
