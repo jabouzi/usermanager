@@ -1,14 +1,3 @@
-Bonjour %s %s,
-
-Votre compte a été mis à jour.
-Votre identifiant est : %s
-Votre mot de passe est : %s
-Le lien de l'application : http://lenomdevotrecompagnie.com/
-
-Merci.
-
---------------------
-
 Hello %s %s 
 
 Your account has been updated
