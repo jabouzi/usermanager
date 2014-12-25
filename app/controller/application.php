@@ -155,7 +155,8 @@ class Application extends Controller
 
 	private function sendemail($user, $edit = 0)
 	{
-		$text = array(APPPATH.'public/docs/useremail.txt', APPPATH.'public/docs/useremail2.txt');
+		$lang = get_site_lang();
+		$text = array(APPPATH."public/docs/{$lang}/useremail.txt", APPPATH."public/docs/{$lang}/useremail2.txt");
 		$this->mailerdecorator->decorateuser($user, file_get_contents($text[$edit]));
 		$this->mailerdecorator->sendusermail($user);
 	}
