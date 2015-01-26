@@ -26,7 +26,7 @@ if (islogged())
 }
 else
 {
-	echo '<li>&npsp;</li>';
+	echo '<li>&nbsp;</li>';
 }
 echo '</ul>';
 
