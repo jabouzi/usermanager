@@ -19,10 +19,10 @@ class Useradmindao {
 				':last_name' => $user->get_last_name(),
 				':password' => $this->encrypt->encrypt($user->get_password()),
 				':admin' => $user->get_admin(),
-				':status' => $user->get_status()
+				':active' => $user->get_active()
 			);
 
-		$query = "INSERT INTO user_admin VALUES ('', :email, :first_name, :last_name, :password, :admin, :status)";
+		$query = "INSERT INTO user_admin VALUES ('', :email, :first_name, :last_name, :password, :admin, :active)";
 		$this->db->query($query, $args);
 		return $this->db->lastInsertId();
 	}
@@ -35,7 +35,7 @@ class Useradmindao {
 				':first_name' => $user->get_first_name(),
 				':last_name' => $user->get_last_name(),
 				':admin' => $user->get_admin(),
-				':status' => $user->get_status(),
+				':active' => $user->get_active(),
 				':id' => $user->get_id()
 			);
 		if (!isempty($user->get_password()))
@@ -44,7 +44,7 @@ class Useradmindao {
 			$password = ', password = :password';
 		}
 		$query = "UPDATE user_admin SET
-				email = :email, first_name = :first_name, last_name = :last_name, admin = :admin, status = :status {$password}
+				email = :email, first_name = :first_name, last_name = :last_name, admin = :admin, active = :active {$password}
 				WHERE id = :id";
 		$update = $this->db->query($query, $args);
 		return $update;

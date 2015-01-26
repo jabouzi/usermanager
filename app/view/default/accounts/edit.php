@@ -33,6 +33,10 @@
 		<label for="user_password"><?php echo lang('form.password'); ?>:</label>
 		<input type="password" name="user_password" id="user_password" value="<?php echo print_post_text('user_password'); ?>" autocomplete="off" />
 	</div>
+	<div class="row">
+		<label for="status"><?php echo lang('form.active'); ?>:</label>
+		<input type="checkbox" name="status" id="status" value="1" <?php if (intval(print_post_text('active', $user->get_user_active())) == 1) echo 'checked'; ?>>
+    </div>
     <div>
 		<div class="row"><label for="submit"> </label>
 			<input id="submitedit" type="button" value="<?php echo lang('title.edit.account'); ?>" class="submitbutton" />

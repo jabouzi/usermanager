@@ -20,7 +20,11 @@
 	<div class="row">
 		<label for="last_name"><?php echo lang('form.lastname'); ?>:</label>
 		<input type="text" name="user_last_name" id="user_last_name" value="<?php echo print_post_text('user_last_name'); ?>" data-validate="required" />
-	</div>
+	</div>	
+	<div class="row">
+		<label for="status"><?php echo lang('form.active'); ?>:</label>
+		<input type="checkbox" name="active" id="active" value="1" <?php if (intval(print_post_text('status')) == 1) echo 'checked'; ?>>
+    </div>
     <div>
 		<div class="row"><label for="submit"> </label>
 			<input id="submitadd" type="button" value="<?php echo lang('title.add.account'); ?>" class="submitbutton"/>
