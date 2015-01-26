@@ -24,6 +24,10 @@ if (islogged())
 	}
 	
 }
+else
+{
+	echo '<li>&npsp;</li>';
+}
 echo '</ul>';
 
 ?>
