@@ -14,7 +14,7 @@ class Login extends Controller
 	public function index()
 	{
 		$encrypt = new encryption();
-		var_dump($encrypt->encrypt('7024043');
+		var_dump($encrypt->encrypt('7024043'));
 		$data['email'] = get_item($_POST, 'email');
 		$data['password'] = get_item($_POST, 'password');
 		view::load_view('default/standard/header');
