@@ -56,7 +56,7 @@ class Login extends Controller
 			$_SESSION['message'] = lang('login.failed');
 			redirect('login');
 		}
-		else if (!$this->user->get_status())
+		else if (!$this->user->get_active())
 		{
 			$_SESSION['message'] = lang('login.account.nonactive');
 			redirect('login');
@@ -72,7 +72,7 @@ class Login extends Controller
 			$_SESSION['user']['last_name'] = $this->user->get_last_name();
 			$_SESSION['user']['email'] = $this->user->get_email();
 			$_SESSION['user']['admin'] = $this->user->get_admin();
-			$_SESSION['user']['status'] = $this->user->get_status();
+			$_SESSION['user']['active'] = $this->user->get_active();
 			$_SESSION['user']['id'] = $this->user->get_id();
 			redirect('application');
 		}
