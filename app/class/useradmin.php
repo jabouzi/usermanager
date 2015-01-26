@@ -89,7 +89,7 @@ class Useradmin extends User {
 		$str .= ' first_name : ' . $this->get_first_name();
 		$str .= ' last_name : ' . $this->get_last_name();
 		$str .= ' admin : ' . $this->get_admin();
-		$str .= ' active : ' . $this->get_status();
+		$str .= ' active : ' . $this->get_active();
 		return $str;
 	}
 
@@ -102,7 +102,7 @@ class Useradmin extends User {
 			'first_name' => $this->get_first_name(),
 			'last_name' => $this->get_last_name(),
 			'admin' => $this->get_admin(),
-			'active' => $this->get_status(),
+			'active' => $this->get_active(),
 		);
 	}
 }
