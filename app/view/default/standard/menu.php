@@ -26,7 +26,7 @@ if (islogged())
 }
 else
 {
-	echo '<li>&nbsp;</li>';
+	echo '<li>Skander</li>';
 }
 echo '</ul>';
 
