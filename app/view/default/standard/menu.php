@@ -24,10 +24,6 @@ if (islogged())
 	}
 	
 }
-else
-{
-	echo '<li>Skander</li>';
-}
 echo '</ul>';
 
 ?>
