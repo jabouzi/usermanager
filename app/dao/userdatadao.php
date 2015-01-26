@@ -18,9 +18,10 @@ class Userdatadao {
 			':user_password' => $this->encrypt->encrypt($user->get_user_password()),
 			':user_email' => $user->get_user_email(),
 			':user_first_name' => $user->get_user_first_name(),
-			':user_last_name' => $user->get_user_last_name()
+			':user_last_name' => $user->get_user_last_name(),
+			':user_active' => $user->get_user_active()
 		);
-		$query = "INSERT INTO user_info VALUES ('', :user_name, :user_password, :user_email, :user_first_name, :user_last_name)";
+		$query = "INSERT INTO user_info VALUES ('', :user_name, :user_password, :user_email, :user_first_name, :user_last_name, :user_active)";
 		$insert = $this->db->query($query, $args);
 		return $insert;
 	}
@@ -33,6 +34,7 @@ class Userdatadao {
 			':user_email' => $user->get_user_email(),
 			':user_first_name' => $user->get_user_first_name(),
 			':user_last_name' => $user->get_user_last_name(),
+			':user_active' => $user->get_user_active()
 		);
 		if (!isempty($user->get_user_password()))
 		{
@@ -40,7 +42,7 @@ class Userdatadao {
 			$password = ', user_password = :user_password';
 		}
 		$query = "UPDATE user_info SET
-				user_email = :email, user_first_name = :user_first_name, user_last_name = :user_last_name {$password}
+				user_email = :email, user_first_name = :user_first_name, user_last_name = :user_last_name {$password} user_active = :user_active
 				WHERE user_name = :user_name";
 		$update = $this->db->query($query, $args);
 		return $update;

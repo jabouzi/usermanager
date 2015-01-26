@@ -3,8 +3,7 @@
 class Userdata extends User {
 
 	private $user_name;
-	private $user_group;
-	private $user_vhost = array();
+	private $user_active;
 
 	function __construct()
 	{
@@ -35,6 +34,11 @@ class Userdata extends User {
 	{
 		parent::set_last_name($last_name);
 	}
+	
+	public function set_user_active($active)
+	{
+		$this->user_active = $active;
+	}
 
 	public function get_user_name()
 	{
@@ -60,6 +64,11 @@ class Userdata extends User {
 	{
 		return parent::get_last_name();
 	}
+	
+	public function get_user_active()
+	{
+		return $this->user_active;
+	}
 
 	public function __toString()
 	{
@@ -68,6 +77,7 @@ class Userdata extends User {
 		$str .= ' user_password : ' . $this->get_user_password();
 		$str .= ' user_first_name : ' . $this->get_user_first_name();
 		$str .= ' user_last_name : ' . $this->get_user_last_name();
+		$str .= ' user_active : ' . $this->get_user_active();
 		return $str;
 	}
 
@@ -78,7 +88,8 @@ class Userdata extends User {
 			'user_email' => $this->get_user_email(),
 			'user_password' => $this->get_user_password(),
 			'user_first_name' => $this->get_user_first_name(),
-			'user_last_name' => $this->get_user_last_name()
+			'user_last_name' => $this->get_user_last_name(),
+			'user_active' => $this->get_user_active()
 		);
 	}
 }

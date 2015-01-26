@@ -4,7 +4,7 @@ class Useradmin extends User {
 
 	private $id;
 	private $admin;
-	private $status;
+	private $active;
 
 	function __construct()
 	{
@@ -41,9 +41,9 @@ class Useradmin extends User {
 		$this->admin = $admin;
 	}
 
-	public function set_status($status = 1)
+	public function set_active($active = 1)
 	{
-		$this->status = $status;
+		$this->active = $active;
 	}
 
 	public function get_id()
@@ -76,9 +76,9 @@ class Useradmin extends User {
 		return $this->admin;
 	}
 
-	public function get_status()
+	public function get_active()
 	{
-		return $this->status;
+		return $this->active;
 	}
 
 	public function __toString()
@@ -89,7 +89,7 @@ class Useradmin extends User {
 		$str .= ' first_name : ' . $this->get_first_name();
 		$str .= ' last_name : ' . $this->get_last_name();
 		$str .= ' admin : ' . $this->get_admin();
-		$str .= ' status : ' . $this->get_status();
+		$str .= ' active : ' . $this->get_status();
 		return $str;
 	}
 
@@ -102,7 +102,7 @@ class Useradmin extends User {
 			'first_name' => $this->get_first_name(),
 			'last_name' => $this->get_last_name(),
 			'admin' => $this->get_admin(),
-			'status' => $this->get_status(),
+			'active' => $this->get_status(),
 		);
 	}
 }
