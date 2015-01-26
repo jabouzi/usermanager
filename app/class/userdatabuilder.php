@@ -18,6 +18,7 @@ class Userdatabuilder
 		$this->user->set_user_email($this->user_data['user_email']);
 		$this->user->set_user_first_name($this->user_data['user_first_name']);
 		$this->user->set_user_last_name($this->user_data['user_last_name']);
+		$this->user->set_user_active($this->user_data['user_active']);
 	}
 
 	public function getUser()
