@@ -15,13 +15,12 @@ class Userdatadao {
 	{
 		$args = array(
 			':user_name' => $user->get_user_name(),
-			':password' => $user->get_user_password(),
-			':email' => $user->get_user_email(),
-			':first_name' => $user->get_user_first_name(),
-			':last_name' => $user->get_user_last_name(),
-			':pwd' => $this->encrypt->encrypt($user->get_user_password()),
+			':user_password' => $this->encrypt->encrypt($user->get_user_password()),
+			':user_email' => $user->get_user_email(),
+			':user_first_name' => $user->get_user_first_name(),
+			':user_last_name' => $user->get_user_last_name()
 		);
-		$query = "INSERT INTO user_info VALUES (:user_name, encrypt(:password), :first_name, :last_name, :email, :pwd)";
+		$query = "INSERT INTO user_info VALUES ('', :user_name, :user_password, :user_email, :user_first_name, :user_last_name)";
 		$insert = $this->db->query($query, $args);
 		return $insert;
 	}
@@ -31,18 +30,17 @@ class Userdatadao {
 		$password = '';
 		$args = array(
 			':user_name' => $user->get_user_name(),
-			':email' => $user->get_user_email(),
-			':first_name' => $user->get_user_first_name(),
-			':last_name' => $user->get_user_last_name(),
+			':user_email' => $user->get_user_email(),
+			':user_first_name' => $user->get_user_first_name(),
+			':user_last_name' => $user->get_user_last_name(),
 		);
 		if (!isempty($user->get_user_password()))
 		{
-			$args[':password'] = $user->get_user_password();
-			$args[':pwd'] = $this->encrypt->encrypt($user->get_user_password());
-			$password = ', user_password = encrypt(:password), user_pwd = :pwd';
+			$args[':user_password'] = $this->encrypt->encrypt($user->get_user_password());
+			$password = ', user_password = :user_password';
 		}
 		$query = "UPDATE user_info SET
-				user_email = :email, user_first_name = :first_name, user_last_name = :last_name {$password}
+				user_email = :email, user_first_name = :user_first_name, user_last_name = :user_last_name {$password}
 				WHERE user_name = :user_name";
 		$update = $this->db->query($query, $args);
 		return $update;
@@ -71,7 +69,7 @@ class Userdatadao {
 		$query = "SELECT * FROM user_info WHERE user_name = :user_name";
 		$result = $this->db->query($query, $args);
 		if (!count($result)) return false;
-		$result[0]['user_password'] = $this->encrypt->decrypt($result[0]['user_pwd']);
+		$result[0]['user_password'] = $this->encrypt->decrypt($result[0]['user_password']);
 		return $result[0];
 	}
 }
