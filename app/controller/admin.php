@@ -141,7 +141,7 @@ class Admin extends Controller
 		else
 		{
 			$_POST['admin'] = $_SESSION['user']['admin'];
-			$_POST['status'] = $_SESSION['user']['status'];
+			$_POST['active'] = $_SESSION['user']['active'];
 			$this->adminmodel->update_user($_POST);
 			$_SESSION['message'] = lang('admin.user.updated');
 			redirect('admin/profile');
