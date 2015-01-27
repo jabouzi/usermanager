@@ -7,7 +7,11 @@ body {
 table {
     border-collapse: collapse;
 }
-undefinedhr {
+table td {
+    border: 1px solid #ccc;
+    padding: 3px;
+}
+hr {
     clear: both;
     margin: 20px 0;
 }
@@ -70,7 +74,18 @@ input.deletebutton {
 	font-weight: bold;
 	width: auto;
 }
-undefined.error {
+input.radio {
+    width: auto;
+    border: none;
+    float: none;
+}
+.error_input {
+	border: 2px solid #FF0000;
+}
+.radiooption {
+    margin-right: 10px;
+}
+.error {
 	background-color: #E43737;
 	color: #fff;
 	cursor: pointer;
@@ -132,7 +147,48 @@ undefined.error {
     background-color: #fff;
     min-height: 500px;
 }
-undefined#browsecontacts a {
+.sidebar {
+    padding: 5px;
+    float: right;
+}
+a.featured {
+    padding: 10px;
+    color: #000;
+    font-weight: bold;
+    background-color: #6f6;
+    margin: 5px;
+}
+a.featured:hover {
+    background-color: #292;
+    color: #fff;
+}
+.sidebar a.removal {
+    background-color: #f66;
+}
+.contactgrouping {
+    border: 1px solid #ccc;
+    background-color: #f9f9ff;
+    margin-bottom: 10px;
+}
+.contactgrouping a, .contactgrouping a:visited {
+    display: block;
+    font-size: 10px;
+    color: #00f;
+}
+.contactgrouping a.addcontactgrouping, .contactgrouping a.deletecontactgrouping {
+    padding-top: 20px;
+    clear: both;
+}
+.methodboxvaluebox {
+    display: none;
+}
+#contactgroupingcontainer {
+    display: none;
+}
+.hasvalue {
+    display: block;
+}
+#browsecontacts a {
     padding: 5px;
     border: 1px solid #f4f4f4;
     display: block;
