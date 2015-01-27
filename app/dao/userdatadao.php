@@ -42,7 +42,7 @@ class Userdatadao {
 			$password = ', user_password = :user_password';
 		}
 		$query = "UPDATE user_info SET
-				user_email = :email, user_first_name = :user_first_name, user_last_name = :user_last_name, user_active = :user_active {$password}
+				user_email = :user_email, user_first_name = :user_first_name, user_last_name = :user_last_name, user_active = :user_active {$password}
 				WHERE user_name = :user_name";
 		$update = $this->db->query($query, $args);
 		return $update;
