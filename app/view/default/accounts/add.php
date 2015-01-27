@@ -23,7 +23,7 @@
 	</div>	
 	<div class="row">
 		<label for="status"><?php echo lang('form.active'); ?>:</label>
-		<input type="checkbox" name="active" id="active" value="1" <?php if (intval(print_post_text('status')) == 1) echo 'checked'; ?>>
+		<input type="checkbox" name="user_active" id="user_active" value="1" <?php if (intval(print_post_text('user_active')) == 1) echo 'checked'; ?>>
     </div>
     <div>
 		<div class="row"><label for="submit"> </label>
