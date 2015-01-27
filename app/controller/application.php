@@ -21,7 +21,6 @@ class Application extends Controller
 		view::load_view('default/standard/menu');
 		if ($users)
 		{
-			var_dump($users);
 			$data['users'] = $users;
 			view::load_view('default/accounts/userslist', $data);
 		}
