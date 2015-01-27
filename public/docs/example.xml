@@ -6,6 +6,7 @@
 		<user_first_name>Admin</user_first_name>
 		<user_last_name>Admin</user_last_name>
 		<user_email>admin@admin.com</user_email>
+		<user_active>1</user_active>
 	</user_info>
 	<user_info>
 		<user_name>admin1</user_name>
@@ -13,5 +14,6 @@
 		<user_first_name>Admin1</user_first_name>
 		<user_last_name>Admin1</user_last_name>
 		<user_email>admin1@admin.com</user_email>
+		<user_active>0</user_active>
 	</user_info>
 </users_infos>
