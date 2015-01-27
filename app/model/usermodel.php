@@ -18,6 +18,7 @@ class Usermodel extends Model
 
 	public function add_user($userdata)
 	{
+		if (!isset($userdata['user_active'])) $userdata['user_active'] = 0;
 		$builder = new userdatabuilder($userdata);
 		$builder->build();
 		$user = $builder->getUser();
@@ -29,6 +30,7 @@ class Usermodel extends Model
 
 	public function update_user($userdata)
 	{
+		if (!isset($userdata['user_active'])) $userdata['user_active'] = 0;
 		$builder = new userdatabuilder($userdata);
 		$builder->build();
 		$user = $builder->getUser();

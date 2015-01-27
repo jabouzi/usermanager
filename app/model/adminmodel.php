@@ -19,7 +19,7 @@ class Adminmodel extends Model
 	public function add_user($userdata)
 	{
 		if (!isset($userdata['admin'])) $userdata['admin'] = 0;
-		if (!isset($userdata['status'])) $userdata['status'] = 0;
+		if (!isset($userdata['active'])) $userdata['active'] = 0;
 		$builder = new useradminbuilder($userdata);
 		$builder->build();
 		$user = $builder->getUser();
@@ -32,7 +32,7 @@ class Adminmodel extends Model
 	public function update_user($userdata)
 	{
 		if (!isset($userdata['admin'])) $userdata['admin'] = 0;
-		if (!isset($userdata['status'])) $userdata['status'] = 0;
+		if (!isset($userdata['active'])) $userdata['active'] = 0;
 		$builder = new useradminbuilder($userdata);
 		$builder->build();
 		$user = $builder->getUser();
