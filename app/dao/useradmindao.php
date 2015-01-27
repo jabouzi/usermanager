@@ -22,7 +22,8 @@ class Useradmindao {
 				':active' => $user->get_active()
 			);
 
-		$query = "INSERT INTO user_admin VALUES ('', :email, :first_name, :last_name, :password, :admin, :active)";
+		$query = "INSERT INTO user_admin (email, first_name, last_name, password, admin, active) 
+				VALUES ('', :email, :first_name, :last_name, :password, :admin, :active)";
 		$this->db->query($query, $args);
 		return $this->db->lastInsertId();
 	}
