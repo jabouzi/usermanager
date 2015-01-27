@@ -15,7 +15,7 @@ class Xmlimportadapter
 		$index = 0;
 		foreach ($racine->user_info as $usr_info) 
 		{
-			if (count((array)$usr_info) == 7)
+			if (count((array)$usr_info) == 6)
 			{
 				$users[$index] = (array)$usr_info;
 				$index++;
