@@ -52,7 +52,7 @@ input {
 	float: left;
 }
 select {
-    float: left;
+    /*float: left;*/
     margin-right: 2px;
 }
 input:focus, select:focus {
