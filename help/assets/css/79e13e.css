@@ -1,0 +1,87 @@
+@font-face {
+	font-family: 'Nitti iA';
+	src: url('79e13e-Regular-R141126-web.eot');
+	src: url('79e13e-Regular-R141126-web.eot?#iefix&version=141126') format('embedded-opentype'),
+			 url('79e13e-Regular-R141126-web.woff') format('woff'),
+			 url('79e13e-Regular-R141126-web.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Nitti iA';
+	src: url('79e13e-Italic-R141126-web.eot');
+	src: url('79e13e-Italic-R141126-web.eot?#iefix&version=141126') format('embedded-opentype'),
+			 url('79e13e-Italic-R141126-web.woff') format('woff'),
+			 url('79e13e-Italic-R141126-web.ttf') format('truetype');
+	font-weight: normal;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'Nitti iA';
+	src: url('79e13e-Bold-R141126-web.eot');
+	src: url('79e13e-Bold-R141126-web.eot?#iefix&version=141126') format('embedded-opentype'),
+			 url('79e13e-Bold-R141126-web.woff') format('woff'),
+			 url('79e13e-Bold-R141126-web.ttf') format('truetype');
+	font-weight: bold;
+	font-style: normal;
+}
+@font-face {
+    font-family: 'Nitti iA';
+    src: url('79e13e-BoldItalic-  R141126-web.eot');
+    src: url('79e13e-BoldItalic-R141126-web.eot?#iefix&version=141126') format('embedded-opentype'),
+    url('79e13e-BoldItalic-R141126-web.woff') format('woff'),
+    url('79e13e-BoldItalic-R141126-web.ttf') format('truetype');
+    font-weight: bold;
+    font-style: italic;
+}
+@font-face {
+	font-family: 'Nitti iA SC';
+	src: url('79e13e-SC-Regular-R141126-web.eot');
+	src: url('79e13e-SC-Regular-R141126-web.eot?#iefix&version=141126') format('embedded-opentype'),
+			 url('79e13e-SC-Regular-R141126-web.woff') format('woff'),
+			 url('79e13e-SC-Regular-R141126-web.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Nitti iA SC';
+	src: url('79e13e-SC-Bold-R141126-web.eot');
+	src: url('79e13e-SC-Bold-R141126-web.eot?#iefix&version=141126') format('embedded-opentype'),
+			 url('79e13e-SC-Bold-R141126-web.woff') format('woff'),
+			 url('79e13e-SC-Bold-R141126-web.ttf') format('truetype');
+	font-weight: bold;
+	font-style: normal;
+}
+
+@media
+    only screen and (-webkit-min-device-pixel-ratio: 2),
+    only screen and (   min--moz-device-pixel-ratio: 2),
+    only screen and (     -o-min-device-pixel-ratio: 2/1),
+    only screen and (        min-device-pixel-ratio: 2),
+    only screen and (                min-resolution: 192dpi),
+    only screen and (                min-resolution: 2dppx) {
+	@font-face {
+		font-family: 'Nitti iA';
+		src: url('79e13e-RegularHD-R141126.woff') format('woff');
+		font-weight: normal;
+		font-style: normal;
+	}
+
+	@font-face {
+		font-family: 'Nitti iA';
+		src: url('79e13e-ItalicHD-R141126.woff') format('woff');
+		font-weight: normal;
+		font-style: italic;
+	}
+
+	@font-face {
+		font-family: 'Nitti iA SC';
+		src:  url('79e13e-SC-RegularHD-R141126.woff') format('woff');
+		font-weight: normal;
+		font-style: normal;
+	}
+
+}
