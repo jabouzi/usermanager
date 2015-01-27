@@ -13,7 +13,7 @@ class Xlsimportadapter
 	{
 		try {
 			$users = array();
-			$params = array(1 => 'user_name', 'user_password', 'user_first_name', 'user_last_name', 'user_email', 'user_group', 'user_vhost');
+			$params = array(1 => 'user_name', 'user_password', 'user_first_name', 'user_last_name', 'user_email', 'user_active');
 			$excel = new Spreadsheet_Excel_Reader($file);
 			$rows = $excel->rowcount($sheet_index=0);
 			$cols = $excel->colcount($sheet_index=0);
