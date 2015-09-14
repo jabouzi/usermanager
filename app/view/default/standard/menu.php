@@ -6,7 +6,7 @@ display_languages();
 echo '</li>';
 if (islogged())
 {
-	$links = array('/'=> lang('title.accounts'),
+	$links = array('/'.get_site_lang() => lang('title.accounts'),
 				   '/'.get_site_lang().'/application/add'=> lang('title.add.account'),
 				   '/'.get_site_lang().'/application/import'=> lang('title.import.accounts')
 				   );
