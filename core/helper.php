@@ -74,11 +74,6 @@ function redirect($uri = '', $method = 'location', $http_response_code = 302)
 	exit;
 }
 
-function item($array, $key)
-{
-	return (isset($array[$key])) ? $array[$key] : false;
-}
-
 function isempty($string)
 {
 	$string = trim($string);

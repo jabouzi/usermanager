@@ -63,7 +63,7 @@ class Userimport
 
 	private function checkitem($userdata, $param, $key)
 	{
-		if (item($userdata, $param) && !isempty($userdata[$param]))	return 0;
+		if (get_item($userdata, $param) && !isempty($userdata[$param]))	return 0;
 		$this->set_message(sptrinf(lang('account.param.empty'), $param).'<br />');
 		return 1;
 	}
