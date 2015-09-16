@@ -1,9 +1,8 @@
-<div id="header">
+<div id="left-container">
+	<ul class="left-menu">
+
 <?php
-echo '<ul>';
-echo '<li class="first-item">';
-display_languages();
-echo '</li>';
+
 if (islogged())
 {
 	$links = array('/'.get_site_lang() => lang('title.accounts'),
@@ -24,9 +23,8 @@ if (islogged())
 	}
 	
 }
-echo '</ul>';
 
 ?>
 
+	</ul>
 </div>
-    <div id="body">
