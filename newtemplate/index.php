@@ -4,7 +4,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta http-equiv="imagetoolbar" content="false" />
         <meta name="robots" content="noindex,nofollow" />
-        <title>SKI QUÉBEC ALPIN : Module de gestion des membres</title>
+        <title>USERS MANAGER APPLICATION</title>
         <link rel="icon" href="/favicon.png" type="image/png" />
         <link rel="shortcut icon" href="/favicon.ico" />
         <link href="/favicon.ico" rel="shortcut icon" />
@@ -15,16 +15,16 @@
             <div class="inner-wrap">
                 <div id="header">
                     <div id="title-site">
-                        <a href="index.php"><h1>UM</h1></a>
-                        <?/* if (is_logged()) : ?>
+                        <a href="index.php"><h1>UMA</h1></a>
+                        <? if (is_logged()) : ?>
                             <div id="site-deconnection"><?=ucfirst($_SESSION['membres']['user']['prenom'])?> <?=ucfirst($_SESSION['membres']['user']['nom'])?> <a href="process_login.php?logout=true">Déconnection</a><br />
                             <? if (isset($_SESSION['membres']['user']['archive_site'])) : ?>
                             <small>Archives (<?=$_SESSION['membres']['user']['archive_site']?>)<a href="process_login.php?quit_archive=true"> Quitter l'archive</a></small>
                             <? endif ?>
                             </div>
-                        <? endif */ ?>
+                        <? endif  ?>
 					</div>
-                    <h2 id="title-header">Module des membres</h2>
+                    <h2 id="title-header"></h2>
 				</div>
                 <div id="main" class="clear-fix">
                     <div id="left-container"><?include('includes/inc_left-menu.php')?></div>
