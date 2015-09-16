@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="imagetoolbar" content="false" />
+    <meta name="robots" content="noindex,nofollow" />
+    <title>SKI QUÉBEC ALPIN : Module de gestion des membres</title>
+    <link href="/public/css/base.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="/public/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/public/js/vform.js"></script>
+    <script type="text/javascript" src="/public/js/app.js"></script>
+</head>
+
+<body>
+    <div class="outter-wrap">
+        <div class="inner-wrap">
+            <div id="header">
+                <div id="title-site">
+                    <a href="index.php">SKI QUÉBEC ALPIN</a>
+                </div>
+                <h2 id="title-header">Module des membres</h2>
+            </div>
+            <div id="main" class="clear-fix">
+                <div id="left-container">
+                    <ul class="left-menu">
+                        <li><a title="Rapport des athletes" href="index.php?source=generate_athletes">Rapport des athlètes</a>
+                        </li>
+                        <li><a title="Rapport des entraineurs" href="index.php?source=generate_entraineurs">Rapport des entraineurs</a>
+                        </li>
+                        <li><a title="Rapport des officiels" href="index.php?source=generate_officiels">Rapport des officiels</a>
+                        </li>
+                        <li><a title="Rapport des adminsitrateurs" href="index.php?source=generate_administrateurs">Rapport des administrateurs</a>
+                        </li>
+                        <li><a title="Rapport des bénévoles" href="index.php?source=generate_benevols">Rapport des bénévoles</a>
+                        </li>
+                        <li><a title="Rapport des cartes par cartes" href="index.php?source=generate_cartesct">Rapport des Cartes par cartes</a>
+                        </li>
+                        <li><a title="Mettre à jour les athlètes" href="index.php?source=update_athletes">Mettre à jour les athlètes</a>
+                        </li>
+                        <li><a title="Mettre à jour les bénévoles" href="index.php?source=update_benevols">Mettre à jour les bénévoles</a>
+                        </li>
+                        <li><a title="Mettre à jour les entraîneurs" href="index.php?source=update_coaches">Mettre à jour les entraineurs</a>
+                        </li>
+                        <li><a title="Mettre à jour les officiels" href="index.php?source=update_officiels">Mettre à jour les officiels</a>
+                        </li>
+                    </ul>
+                </div>
+                <div id="right-container">
+                    <div id="content-page">
+                        <div id="error" style="display:none"></div>
+                        <form action="process_login.php" method="post">
+                            <fieldset name="connexion">
+                                <legend>Gestion de membership SQA : Connexion</legend>
+                                <table align="center" border="0" cellpadding="5" cellspacing="0" class="form-table w100">
+                                    <tr>
+                                        <th nowrap="nowrap" width="50%"><label for="login_user">Nom d'utilisateur&nbsp;:</label></th>
+                                        <td nowrap="nowrap" width="50%"><input id="login_user" class="w100" name="nom_ut" tabindex="1" type="text" value="" /></td>
+                                    </tr>
+                                    <tr>
+                                        <th nowrap="nowrap"><label for="login_pass">Mot de passe&nbsp;:</label></th>
+                                        <td nowrap="nowrap"><input id="login_pass" class="w100" name="password" tabindex="2" type="password" value="" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2"><hr /></td>
+                                    </tr>
+                                    <tr>
+                                        <td align="center" colspan="2"><input class="btnfrm" type="submit" value="Connection" /></td>
+                                    </tr>
+                                </table>
+                            </fieldset>
+                            <input type="hidden" name="redirect_url" value="aHR0cDovL21za2lxdWViZWMvaW5kZXgucGhw" />
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div id="footer">
+				<div class="footer-menu">
+					<a href="mailto:jabouzi@gmail.com">Demander de l'aide</a>
+					<a href="#">© Skander Jabouzi 2015</a>
+					<select id="user_langs" name="user_langs">
+						<option value="fr">fr</option>
+						<option value="en">en</option>
+						<option value="es" selected>es</option>
+					</select>
+				</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
