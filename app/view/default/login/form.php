@@ -1,12 +1,13 @@
 <div id="right-container">
 	<div id="content-page">
+		<?php display_message(); ?>
 		<form action="/<?php echo get_site_lang(); ?>/login/process" method="post">
 			<fieldset name="connexion">
 				<legend><?php echo lang('title.login'); ?></legend>
 				<table align="center" border="0" cellpadding="5" cellspacing="0" class="form-table w100">
 					<tr>
 						<th nowrap="nowrap" width="50%"><label for="email"><?php echo lang('form.username'); ?>:</label></th>
-						<td nowrap="nowrap" width="50%"><input id="email" class="w100" name="nom_ut" tabindex="1" type="text" value="" /></td>
+						<td nowrap="nowrap" width="50%"><input id="email" class="w100" name="email" tabindex="1" type="text" value="" /></td>
 					</tr>
 					<tr>
 						<th nowrap="nowrap"><label for="password"><?php echo lang('form.password'); ?>:</label></th>
