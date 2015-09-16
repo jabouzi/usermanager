@@ -6,6 +6,9 @@
         <meta name="robots" content="noindex,nofollow" />
         <title><?php echo lang('site.title'); ?></title>
         <link href="/public/css/base.css" rel="stylesheet" type="text/css" />
+        <script type="text/javascript" src="/public/js/jquery.min.js"></script>
+		<script type="text/javascript" src="/public/js/vform.js"></script>
+		<script type="text/javascript" src="/public/js/app.js"></script>
 	</head>
     <body>
         <div class="outter-wrap">
