@@ -1,4 +1,3 @@
-			</div>
 				<div id="footer">
 					<div class="footer-menu">
 						<a href="mailto:jabouzi@gmail.com"><?php echo lang('contact.help'); ?></a>

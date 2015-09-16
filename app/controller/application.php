@@ -17,7 +17,8 @@ class Application extends Controller
 	public function index($message = null)
 	{
 		$users = new useriterator($this->usermodel->get_users());
-		view::load_view('default/standard/header');
+		$data['title'] = lang('title.accounts');
+		view::load_view('default/standard/header', $data);
 		view::load_view('default/standard/menu');
 		if ($users)
 		{
