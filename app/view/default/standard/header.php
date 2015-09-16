@@ -15,16 +15,14 @@
             <div class="inner-wrap">
                 <div id="header">
                     <div id="title-site">
-                        <a href=""><h1>UMA</h1></a>
+                        <a href="/<?php echo get_site_lang(); ?>"><h1>UMA</h1></a>
                         
                         <? if (islogged()) : ?>
-                            <div id="site-deconnection"><?=ucfirst($_SESSION['membres']['user']['prenom'])?> <?=ucfirst($_SESSION['membres']['user']['nom'])?> <a href="process_login.php?logout=true">Déconnection</a><br />
-                            <? if (isset($_SESSION['membres']['user']['archive_site'])) : ?>
-                            <small>Archives (<?=$_SESSION['membres']['user']['archive_site']?>)<a href="process_login.php?quit_archive=true"> Quitter l'archive</a></small>
-                            <? endif ?>
+                            <div id="site-deconnection">
+								<?php echo ucfirst($_SESSION['user']['first_name']); ?> <?php echo ucfirst($_SESSION['user']['last_name']); ?>
                             </div>
                         <? endif  ?>
 					</div>
-                    <h2 id="title-header"></h2>
+                    <h2 id="title-header"><?php echo lang('site.title'); ?></h2>
 				</div>
                 <div id="main" class="clear-fix">
