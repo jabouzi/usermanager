@@ -7,7 +7,7 @@ html{overflow-y:scroll}
 body{font:normal 14px/17px Arial, Helvetica, sans-serif;color:#000;background-color:#FFFFFF}
 html, body{height:100%}
 article, aside, details, div, dt, figcaption, footer, form, header, hgroup, html, map, nav, section{display: block;margin:0;padding:0}
-article, aside, blockquote, body, code, details, dd, div, dl, dt, figcaption, footer, form, h1, h2, h3, h4, h5, h6, header, hgroup, html, legend, li, map, nav, ol, p, pre, section, table, td, th, ul{/*border-color:#C0BFBF;border-style:solid*/}
+article, aside, blockquote, body, code, details, dd, div, dl, dt, figcaption, footer, form, h1, h2, h3, h4, h5, h6, header, hgroup, html, legend, li, map, nav, ol, p, pre, section, table, td, th, ul{border-color:#C0BFBF;border-style:solid}
 /* GENERIC TAGS DEFINITION */
 :focus{outline:none}
 a,a:link,a:visited{color:#007DF2;line-height:inherit;text-decoration:none}
@@ -105,7 +105,7 @@ tr.border-bottom-1{border-bottom:0 none}
 /* MAIN */
 #main{}
 /* MAIN LEFT-CONTAINER */
-#left-container{/*border-width:1px;*/float:left;overflow:hidden;width:298px}
+#left-container{border-width:1px;float:left;overflow:hidden;width:298px}
 ul.left-menu li{border-top:1px solid #C0BFBF;color:#007DF2;float:left;font-size:14px;line-height:17px;padding:10px 20px;position:relative;width:258px}
 .left-menu li:first-child{border-top:0 none}
 .left-menu li a,ul.left-menu li a:visited{color:#007DF2}

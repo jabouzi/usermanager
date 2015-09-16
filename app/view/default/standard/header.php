@@ -15,7 +15,7 @@
             <div class="inner-wrap">
                 <div id="header">
                     <div id="title-site">
-                        <a href="/<?php echo get_site_lang(); ?>"><h1>UMA</h1></a>
+                        <a href="/<?php echo get_site_lang(); ?>"><h1>USERS MANAGER APP.</h1></a>
                         
                         <? if (islogged()) : ?>
                             <div id="site-deconnection">
@@ -23,6 +23,6 @@
                             </div>
                         <? endif  ?>
 					</div>
-                    <h2 id="title-header"><?php echo lang('site.title'); ?></h2>
+                    <h2 id="title-header"><?php echo $title; ?></h2>
 				</div>
                 <div id="main" class="clear-fix">
