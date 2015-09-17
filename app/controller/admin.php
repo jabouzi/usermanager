@@ -18,7 +18,8 @@ class Admin extends Controller
 	public function index($message = null)
 	{
 		$users = new useriterator($this->adminmodel->get_users());
-		view::load_view('default/standard/header');
+		$data['title'] = lang('title.admins');
+		view::load_view('default/standard/header', $data);
 		view::load_view('default/standard/menu');
 		if ($users)
 		{
@@ -37,7 +38,8 @@ class Admin extends Controller
 		$user = $this->adminmodel->get_user($_SESSION['user']['email']);
 		$data['user'] = $user;
 		$_SESSION['admin_edit'] = $user->__toArray();
-		view::load_view('default/standard/header');
+		$data['title'] = lang('title.profile');
+		view::load_view('default/standard/header', $data);
 		view::load_view('default/standard/menu');
 		view::load_view('default/admins/profile', $data);
 		view::load_view('default/standard/footer');
@@ -46,7 +48,8 @@ class Admin extends Controller
 
 	public function add()
 	{
-		view::load_view('default/standard/header');
+		$data['title'] = lang('title.add.admin'); 
+		view::load_view('default/standard/header', $data);
 		view::load_view('default/standard/menu');
 		view::load_view('default/admins/add');
 		view::load_view('default/standard/footer');
@@ -59,7 +62,8 @@ class Admin extends Controller
 		$user = $this->adminmodel->get_user($this->adminmodel->get_email_by_id($id));
 		$data['user'] = $user;
 		$_SESSION['admin_edit'] = $user->__toArray();
-		view::load_view('default/standard/header');
+		$data['title'] = lang('title.edit.admin'); 
+		view::load_view('default/standard/header', $data);
 		view::load_view('default/standard/menu');
 		view::load_view('default/admins/edit', $data);
 		view::load_view('default/standard/footer');

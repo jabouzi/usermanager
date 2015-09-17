@@ -34,7 +34,8 @@ class Application extends Controller
 
 	public function add()
 	{
-		view::load_view('default/standard/header');
+		$data['title'] = lang('title.add.account');
+		view::load_view('default/standard/header', $data);
 		view::load_view('default/standard/menu');
 		view::load_view('default/accounts/add');
 		view::load_view('default/standard/footer');
@@ -46,7 +47,8 @@ class Application extends Controller
 		$user = $this->usermodel->get_user($user_name);
 		$data['user'] = $user;
 		$_SESSION['user_edit'] = $user->__toArray();
-		view::load_view('default/standard/header');
+		$data['title'] = lang('title.edit.account');
+		view::load_view('default/standard/header', $data);
 		view::load_view('default/standard/menu');
 		view::load_view('default/accounts/edit', $data);
 		view::load_view('default/standard/footer');
@@ -116,7 +118,8 @@ class Application extends Controller
 
 	public function import()
 	{
-		view::load_view('default/standard/header');
+		$data['title'] = lang('title.import.accounts');
+		view::load_view('default/standard/header', $data);
 		view::load_view('default/standard/menu');
 		view::load_view('default/accounts/import');
 		view::load_view('default/standard/footer');

@@ -16,7 +16,8 @@ class Login extends Controller
 		$encrypt = new encryption();
 		$data['email'] = get_item($_POST, 'email');
 		$data['password'] = get_item($_POST, 'password');
-		view::load_view('default/standard/header');
+		$data['title'] = lang('title.login');
+		view::load_view('default/standard/header', $data);
 		view::load_view('default/standard/menu');
 		view::load_view('default/login/form', $data);
 		view::load_view('default/standard/footer');
