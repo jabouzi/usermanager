@@ -46,7 +46,7 @@ h5{color:#444;font-size:16px}
 h6{color:#444;font-size:14px}
 /* FORM */
 button,input,select,textarea,label{-moz-box-sizing:border-box;-ms-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing:border-box;font-family:Arial, Helvetica, sans-serif;font-size:12px;font-weight:400;line-height:18px!important;padding:1px;vertical-align:top}
-input[type=file],input[type=password],input[type=radio],input[type=text],select,option{height:20px;line-height:20px}
+input[type=file],input[type=password],input[type=radio],input[type=text]{width:100%}
 th label{font-weight:700}
 textarea{cursor:text;letter-spacing:normal;margin-bottom:0;margin-top:0;resize:none;text-align:start;text-indent:0;text-shadow:none;text-transform:none;word-spacing:normal;word-wrap:break-word}
 button.button,input.input,select.select,textarea.textarea,label.label,.button,fieldset.fieldset{border:1px solid #bfc1c3}
@@ -121,6 +121,7 @@ ul.left-menu li{border-top:1px solid #C0BFBF;color:#007DF2;float:left;font-size:
 #content-page{margin-top:10px}
 /* FOOTER */
 #footer{background-color:#EFF0F1;font-size:13px;height:40px;line-height:40px;margin-top:20px;padding:0 20px;text-align:right;vertical-align:middle}
+.select_footer{margin-left:20px;padding:0 20px;text-align:right;vertical-align:middle}
 .footer-menu a,.footer-menu a:link,.footer-menu a:visited{color:#999;margin-left:20px;text-decoration:none}
 .footer-menu a:hover,.footer-menu a:visited:hover,.footer-menu a:active,.footer-menu a:focus{color:#007DF2;text-decoration:underline}
 /* TABLE */
@@ -200,7 +201,15 @@ a.btn:hover,a.btn:visited:hover,a.btn:active,a.btn:focus{background-color:#C0BFB
 .highlight-filled-option{background-color:#f6fff6}
 .highlight-missing-option{background-color:#fff6f6}
 table tr .td-checkbox-only{padding:5px;text-align:center}
-.error{border:1px solid red}
+.error {
+	background-color: #E43737;
+	color: #fff;
+	cursor: pointer;
+	font-weight: bold;
+	display: inline-block;
+	padding: 4px 12px;
+	margin-bottom: 20px;
+}
 #error{background-color: #FFF0F0;border: 1px solid red;padding: 5px 10px;}
 .admin_pagination{font-size:12px;line-height:20px;margin:5px 0;text-align:right;vertical-align:middle}
 .pagination-prev{border-right:1px solid #CCC;margin-right:5px;padding-right:5px}
@@ -212,3 +221,47 @@ table tr .td-checkbox-only{padding:5px;text-align:center}
 a.orderby{color:#000}
 
 .add-carte-infos{cursor:pointer}
+.error_form_msg {
+	display: none;
+}
+
+.cancel {
+	background-color: #FF0000;
+	color: #fff;
+	cursor: pointer;
+	font-weight: bold;
+	text-decoration: underline;
+	display: inline-block;
+	padding: 4px 12px;
+	margin-bottom: 20px;
+}
+
+.dissmiss {
+	display: none;
+}
+
+input.deletebutton {
+	border: 2px solid #333;
+	background-color: #BE1313;
+	color: #fff;
+	cursor: pointer;
+	font-weight: bold;
+	width: auto;
+	margin-bottom: 20px;
+}
+
+input.submitbutton {
+	border: 2px solid #333;
+	background-color: #369;
+	color: #fff;
+	cursor: pointer;
+	font-weight: bold;
+	width: auto;
+}
+
+select {
+    /*float: left;*/
+    margin-right: 2px;
+}
+
+

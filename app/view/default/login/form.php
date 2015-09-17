@@ -3,7 +3,6 @@
 		<?php display_message(); ?>
 		<form action="/<?php echo get_site_lang(); ?>/login/process" method="post">
 			<fieldset name="connexion">
-				<legend><?php echo lang('title.login'); ?></legend>
 				<table align="center" border="0" cellpadding="5" cellspacing="0" class="form-table w100">
 					<tr>
 						<th nowrap="nowrap" width="50%"><label for="email"><?php echo lang('form.username'); ?>:</label></th>

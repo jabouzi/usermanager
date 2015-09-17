@@ -18,7 +18,7 @@ function compare_user_admin($user1, $user2)
 
 function display_languages()
 {
-	echo '<select id="user_langs" name="user_langs">';
+	echo '<select id="user_langs" name="user_langs" class="select_footer">';
 	foreach(get_site_langs() as $lang)
 	{
 		$selected = '';
