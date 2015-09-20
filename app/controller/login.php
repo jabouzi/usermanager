@@ -3,12 +3,12 @@
 class Login extends Controller
 {
 	private $user;
-	private $adminmodel;
+	private $usermodel;
 
 	function __construct()
 	{
-		$this->user = new useradmin();
-		$this->adminmodel = new adminmodel();
+		$this->user = new userdata();
+		$this->usermodel = new usermodel();
 	}
 
 	public function index()
@@ -45,6 +45,9 @@ class Login extends Controller
 	{
 		$this->email_empty();
 		$this->check_user();
+		$password = substr(str_shuffle(strtolower(sha1(rand() . time() . $this->user->get_email()))),0, 8);
+		$this->user->set_password($password);
+		$this->user->update_user($this->user->__toArray());
 		$this->sendemail();
 	}
 
@@ -56,7 +59,7 @@ class Login extends Controller
 
 	private function check_login()
 	{
-		$this->user = $this->adminmodel->get_user($_POST['email']);
+		$this->user = $this->usermodel->get_user($_POST['email']);
 		$this->user_inexistant();
 		$this->user_inactive();
 		$this->user_worg_password();
@@ -65,14 +68,14 @@ class Login extends Controller
 	
 	private function check_user()
 	{
-		$this->user = $this->adminmodel->get_user($_POST['email']);
+		$this->user = $this->usermodel->get_user($_POST['email']);
 		$this->user_inexistant();
 		$this->user_inactive();
 	}
 	
 	private function user_inexistant()
 	{
-		if (!$this->user)
+		if (!$this->user->get_id())
 		{
 			$_SESSION['message'] = lang('login.account.not.exists');
 			redirect('login');

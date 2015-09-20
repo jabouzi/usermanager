@@ -2,6 +2,7 @@
 
 class User {
 
+	private $username;
 	private $first_name;
 	private $last_name;
 	private $email;
@@ -10,6 +11,11 @@ class User {
 	function __construct()
 	{
 
+	}
+	
+	public function set_username($username)
+	{
+		$this->username = $username;
 	}
 	
 	public function set_email($email)
@@ -30,6 +36,11 @@ class User {
 	public function set_password($password)
 	{
 		$this->password = $password;
+	}
+	
+	public function get_username()
+	{
+		return $this->username;
 	}
 	
 	public function get_email()

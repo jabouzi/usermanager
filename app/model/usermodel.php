@@ -78,14 +78,14 @@ class Usermodel extends Model
 	{
 		$and = '';
 		$args = array(
-			':user_email' => $user_email
+			':email' => $user_email
 		);
 		if ($user_name != '')
 		{
-			$args[':user_name'] = $user_name;
-			$and = ' AND user_name != :user_name';
+			$args[':username'] = $user_name;
+			$and = ' AND username != :username';
 		}
-		$query = "SELECT count(*) as count FROM user_info WHERE user_email = :user_email {$and} ";
+		$query = "SELECT count(*) as count FROM user_data WHERE useremail = :useremail {$and} ";
 		$count = $this->db->query($query, $args);
 		return intval($count[0]['count']);
 	}
@@ -93,9 +93,9 @@ class Usermodel extends Model
 	public function user_name_exists($user_name)
 	{
 		$args = array(
-			':user_name' => $user_name
+			':username' => $user_name
 		);
-		$query = "SELECT count(*) as count FROM user_info WHERE user_name = :user_name";
+		$query = "SELECT count(*) as count FROM user_data WHERE username = :username";
 		$count = $this->db->query($query, $args);
 		return intval($count[0]['count']);
 	}
