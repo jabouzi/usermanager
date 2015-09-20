@@ -14,15 +14,16 @@ class Userdatadao {
 	public function insert_user($user)
 	{
 		$args = array(
-			':user_name' => $user->get_user_name(),
-			':user_password' => $this->encrypt->encrypt($user->get_user_password()),
-			':user_email' => $user->get_user_email(),
-			':user_first_name' => $user->get_user_first_name(),
-			':user_last_name' => $user->get_user_last_name(),
-			':user_active' => $user->get_user_active()
+			':username' => $user->get_username(),
+			':password' => $this->encrypt->encrypt($user->get_password()),
+			':email' => $user->get_email(),
+			':first_name' => $user->get_first_name(),
+			':last_name' => $user->get_last_name(),
+			':admin' => $user->get_admin(),
+			':active' => $user->get_active()
 		);
-		$query = "INSERT INTO user_info (user_name, user_password, user_email, user_first_name, user_last_name, user_active)
-				VALUES (:user_name, :user_password, :user_email, :user_first_name, :user_last_name, :user_active)";
+		$query = "INSERT INTO user_data (name, password, email, first_name, last_name, admin, active)
+				VALUES (:name, :password, :email, :first_name, :last_name, :admin, :active)";
 		$insert = $this->db->query($query, $args);
 		return $insert;
 	}
@@ -31,28 +32,29 @@ class Userdatadao {
 	{
 		$password = '';
 		$args = array(
-			':user_name' => $user->get_user_name(),
-			':user_email' => $user->get_user_email(),
-			':user_first_name' => $user->get_user_first_name(),
-			':user_last_name' => $user->get_user_last_name(),
-			':user_active' => $user->get_user_active()
+			':username' => $user->get_username(),
+			':email' => $user->get_email(),
+			':first_name' => $user->get_first_name(),
+			':last_name' => $user->get_last_name(),
+			':admin' => $user->get_admin(),
+			':active' => $user->get_active()
 		);
-		if (!isempty($user->get_user_password()))
+		if (!isempty($user->get_password()))
 		{
-			$args[':user_password'] = $this->encrypt->encrypt($user->get_user_password());
-			$password = ', user_password = :user_password';
+			$args[':password'] = $this->encrypt->encrypt($user->get_password());
+			$password = ', password = :password';
 		}
-		$query = "UPDATE user_info SET
-				user_email = :user_email, user_first_name = :user_first_name, user_last_name = :user_last_name, user_active = :user_active {$password}
-				WHERE user_name = :user_name";
+		$query = "UPDATE user_data SET
+				email = :email, first_name = :first_name, last_name = :last_name, admin = :admin, active = :active {$password}
+				WHERE username = :username";
 		$update = $this->db->query($query, $args);
 		return $update;
 	}
 
-	public function delete_user($user_name)
+	public function delete_user($username)
 	{
-		$args = array(':user_name' => $user_name);
-		$query = "DELETE FROM user_info WHERE user_name = :user_name";
+		$args = array(':username' => $username);
+		$query = "DELETE FROM user_data WHERE username = :username";
 		$delete += $this->db->query($query, $args);
 		return $delete;
 	}
@@ -60,19 +62,19 @@ class Userdatadao {
 	public function select_all()
 	{
 		$args = array();
-		$query = "SELECT * FROM user_info WHERE 1 ORDER BY user_name ASC";
+		$query = "SELECT * FROM user_data WHERE 1 ORDER BY id ASC";
 		$results = $this->db->query($query, $args);
 		if (!count($results)) return false;
 		return $results;
 	}
 
-	public function select_user($user_name)
+	public function select_user($username)
 	{
-		$args = array(':user_name' => $user_name);
-		$query = "SELECT * FROM user_info WHERE user_name = :user_name";
+		$args = array(':username' => $username);
+		$query = "SELECT * FROM user_data WHERE username = :username OR email = :username";
 		$result = $this->db->query($query, $args);
 		if (!count($result)) return false;
-		$result[0]['user_password'] = $this->encrypt->decrypt($result[0]['user_password']);
+		$result[0]['password'] = $this->encrypt->decrypt($result[0]['password']);
 		return $result[0];
 	}
 }

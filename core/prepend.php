@@ -48,7 +48,7 @@ function shutdownHandler() //will be called when php script ends.
         case E_CORE_WARNING:
         case E_COMPILE_WARNING:
         case E_PARSE:
-            $error = array("lvl" => $lasterror['type'], "msg" => $lasterror['message'], "file:" => $lasterror['file'], "ln" => $lasterror['line']);
+            $error = array("lvl" => $lasterror['type'], "msg" => $lasterror['message'], "file" => $lasterror['file'], "ln" => $lasterror['line']);
             __log($error, "FATAL ERROR");
     }
 }

@@ -20,7 +20,11 @@ class Application extends Controller
 		$data['title'] = lang('title.accounts');
 		view::load_view('default/standard/header', $data);
 		view::load_view('default/standard/menu');
-		if ($users)
+		if (!isadmin())
+		{
+			$this->profile();
+		}
+		else if ($users)
 		{
 			$data['users'] = $users;
 			view::load_view('default/accounts/userslist', $data);
@@ -30,6 +34,19 @@ class Application extends Controller
 			view::load_view('default/index/welcome');
 		}
 		view::load_view('default/standard/footer');
+	}
+	
+	public function profile()
+	{
+		$user = $this->adminmodel->get_user($_SESSION['user']['email']);
+		$data['user'] = $user;
+		$_SESSION['admin_edit'] = $user->__toArray();
+		$data['title'] = lang('title.profile');
+		view::load_view('default/standard/header', $data);
+		view::load_view('default/standard/menu');
+		view::load_view('default/admins/profile', $data);
+		view::load_view('default/standard/footer');
+		unset($_SESSION['request']);
 	}
 
 	public function add()

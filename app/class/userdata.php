@@ -2,94 +2,119 @@
 
 class Userdata extends User {
 
-	private $user_name;
-	private $user_active;
+	private $id;
+	private $admin;
+	private $active;
 
 	function __construct()
 	{
-		parent::__construct();
+
 	}
 
-	public function set_user_name($user_name)
+	public function set_id($id)
 	{
-		$this->user_name = $user_name;
+		$this->id = $id;
 	}
 
-	public function set_user_password($user_password)
+	public function set_username($username)
 	{
-		parent::set_password($user_password);
+		parent::set_username($username);
 	}
-
-	public function set_user_email($email)
+	
+	public function set_email($email)
 	{
 		parent::set_email($email);
 	}
 
-	public function set_user_first_name($first_name)
+	public function set_first_name($first_name)
 	{
 		parent::set_first_name($first_name);
 	}
 
-	public function set_user_last_name($last_name)
+	public function set_last_name($last_name)
 	{
 		parent::set_last_name($last_name);
 	}
+
+	public function set_password($password)
+	{
+		parent::set_password($password);
+	}
+
+	public function set_admin($admin = 0)
+	{
+		$this->admin = $admin;
+	}
+
+	public function set_active($active = 1)
+	{
+		$this->active = $active;
+	}
+
+	public function get_id()
+	{
+		return $this->id;
+	}
+
+	public function get_username()
+	{
+		return parent::get_username();
+	}
 	
-	public function set_user_active($active)
-	{
-		$this->user_active = $active;
-	}
-
-	public function get_user_name()
-	{
-		return $this->user_name;
-	}
-
-	public function get_user_password()
-	{
-		return parent::get_password();
-	}
-
-	public function get_user_email()
+	public function get_email()
 	{
 		return parent::get_email();
 	}
 
-	public function get_user_first_name()
+	public function get_first_name()
 	{
 		return parent::get_first_name();
 	}
 
-	public function get_user_last_name()
+	public function get_last_name()
 	{
 		return parent::get_last_name();
 	}
-	
-	public function get_user_active()
+
+	public function get_password()
 	{
-		return $this->user_active;
+		return parent::get_password();
+	}
+
+	public function get_admin()
+	{
+		return $this->admin;
+	}
+
+	public function get_active()
+	{
+		return $this->active;
 	}
 
 	public function __toString()
 	{
-		$str = ' user_name : ' . $this->get_user_name();
-		$str .= ' user_email : ' . $this->get_user_email();
-		$str .= ' user_password : ' . $this->get_user_password();
-		$str .= ' user_first_name : ' . $this->get_user_first_name();
-		$str .= ' user_last_name : ' . $this->get_user_last_name();
-		$str .= ' user_active : ' . $this->get_user_active();
+		$str = ' id : ' . $this->get_id();
+		$str .= ' username : ' . $this->get_username();
+		$str .= ' email : ' . $this->get_email();
+		$str .= ' password : ' . $this->get_password();
+		$str .= ' first_name : ' . $this->get_first_name();
+		$str .= ' last_name : ' . $this->get_last_name();
+		$str .= ' admin : ' . $this->get_admin();
+		$str .= ' active : ' . $this->get_active();
 		return $str;
 	}
 
 	public function __toArray()
 	{
 		return array(
-			'user_name' => $this->get_user_name(),
-			'user_email' => $this->get_user_email(),
-			'user_password' => $this->get_user_password(),
-			'user_first_name' => $this->get_user_first_name(),
-			'user_last_name' => $this->get_user_last_name(),
-			'user_active' => $this->get_user_active()
+			'id' => $this->get_id(),
+			'username' => $this->get_username(),
+			'email' => $this->get_email(),
+			'password' => $this->get_password(),
+			'first_name' => $this->get_first_name(),
+			'last_name' => $this->get_last_name(),
+			'admin' => $this->get_admin(),
+			'active' => $this->get_active(),
 		);
 	}
 }
