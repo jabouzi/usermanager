@@ -129,12 +129,7 @@ class Login extends Controller
 	
 	private function set_user_session($user)
 	{
-		$_SESSION['user']['first_name'] = $this->user->get_first_name();
-		$_SESSION['user']['last_name'] = $this->user->get_last_name();
-		$_SESSION['user']['email'] = $this->user->get_email();
-		$_SESSION['user']['admin'] = $this->user->get_admin();
-		$_SESSION['user']['active'] = $this->user->get_active();
-		$_SESSION['user']['id'] = $this->user->get_id();
+		$_SESSION['user'] = $this->user->__toArray();
 		redirect('application');
 	}
 	

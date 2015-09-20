@@ -1,3 +1,3 @@
-user_name;user_password;user_first_name;user_last_name;user_email;user_active
-admin;admin;Admin;Admin;admin@admin.com;1
-admin1;admin1;Admin1;Admin1;admin1@admin.com;0
+username;password;first_name;last_name;email;admin;active
+admin;admin;Admin;Admin;admin@admin.com;1;0
+admin1;admin1;Admin1;Admin1;admin1@admin.com;0;1
