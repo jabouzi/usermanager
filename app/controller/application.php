@@ -27,6 +27,7 @@ class Application extends Controller
 		else if ($users)
 		{
 			$data['users'] = $users;
+			$data['bool'] = array('/public/img/icn_alert_error.png','/public/img/icn_alert_success.png');
 			view::load_view('default/accounts/userslist', $data);
 		}
 		else
@@ -38,13 +39,13 @@ class Application extends Controller
 	
 	public function profile()
 	{
-		$user = $this->adminmodel->get_user($_SESSION['user']['email']);
+		$user = $this->usermodel->get_user($_SESSION['user']['email']);
 		$data['user'] = $user;
-		$_SESSION['admin_edit'] = $user->__toArray();
+		$_SESSION['user_edit'] = $user->__toArray();
 		$data['title'] = lang('title.profile');
 		view::load_view('default/standard/header', $data);
 		view::load_view('default/standard/menu');
-		view::load_view('default/admins/profile', $data);
+		view::load_view('default/accounts/profile', $data);
 		view::load_view('default/standard/footer');
 		unset($_SESSION['request']);
 	}
@@ -61,7 +62,15 @@ class Application extends Controller
 
 	public function edit($user_name)
 	{
+		if ($_SESSION['user']['username'] == $user_name) 
+		{
+			redirect('application/profile');
+		}
 		$user = $this->usermodel->get_user($user_name);
+		if (!$user->get_id())
+		{
+			redirect('application/add');
+		}
 		$data['user'] = $user;
 		$_SESSION['user_edit'] = $user->__toArray();
 		$data['title'] = lang('title.edit.account');
@@ -74,25 +83,25 @@ class Application extends Controller
 
 	public function delete()
 	{
-		if ($_SESSION['user_edit']['user_name'] != $_POST['user_name'])
+		if ($_SESSION['user_edit']['username'] != $_POST['username'])
 		{
 			$_SESSION['message'] = lang('account.security.detected');
-			redirect('application/edit/'.$_SESSION['user_edit']['user_name']);
+			redirect('application/edit/'.$_SESSION['user_edit']['username']);
 		}
-		$this->usermodel->delete_user($_POST['user_name']);
+		$this->usermodel->delete_user($_POST['username']);
 		$_SESSION['message'] = lang('account.user.delete');
 		redirect('/');
 	}
 
 	public function processadd()
 	{
-		if ($this->usermodel->user_email_exists($_POST['user_email']))
+		if ($this->usermodel->email_exists($_POST['email']))
 		{
 			$_SESSION['request'] = $_POST;
 			$_SESSION['message'] = lang('account.email.exists');
 			redirect('application/add');
 		}
-		else if ($this->usermodel->user_name_exists($_POST['user_name']))
+		else if ($this->usermodel->username_exists($_POST['username']))
 		{
 			$_SESSION['request'] = $_POST;
 			$_SESSION['message'] = lang('account.user.name.exists');
@@ -109,27 +118,60 @@ class Application extends Controller
 
 	public function processedit()
 	{
-		if ($_SESSION['user_edit']['user_name'] != $_POST['user_name'])
+		if ($_SESSION['user_edit']['id'] != $_POST['id'])
 		{
 			$_SESSION['message'] = lang('account.security.detected');
-			redirect('application/edit/'.$_SESSION['user_edit']['user_name']);
+			redirect('application/edit/'.$_SESSION['user_edit']['username']);
 		}
-		else if ($this->usermodel->user_email_exists($_POST['user_email'], $_POST['user_name']))
+		else if ($_SESSION['user_edit']['username'] != $_POST['username'])
+		{
+			$_SESSION['message'] = lang('account.security.detected');
+			redirect('application/edit/'.$_SESSION['user_edit']['username']);
+		}
+		else if ($this->usermodel->email_exists($_POST['email'], $_POST['id']))
 		{
 			$_SESSION['request'] = $_POST;
 			$_SESSION['message'] = lang('account.email.exists');
-			redirect('application/edit/'.$_POST['user_name']);
+			redirect('application/edit/'.$_POST['username']);
 		}
 		else
 		{
 			if (count(compare_user_data($_POST, $_SESSION['user_edit'])))
 			{
 				$this->usermodel->update_user($_POST);
-				$user = $this->usermodel->get_user($_POST['user_name'])->__toArray();
+				$user = $this->usermodel->get_user($_POST['username'])->__toArray();
 				$this->sendemail($user, self::EDIT);
 				$_SESSION['message'] = lang('account.user.updated');
 			}
-			redirect('application/edit/'.$_POST['user_name']);
+			redirect('application/edit/'.$_POST['username']);
+		}
+	}
+	
+	public function processprofile()
+	{
+		if ($_SESSION['user_edit']['id'] != $_POST['id'])
+		{
+			$_SESSION['message'] = lang('account.security.detected');
+			redirect('application/profile');
+		}
+		else if ($_SESSION['user_edit']['username'] != $_POST['username'])
+		{
+			$_SESSION['message'] = lang('account.security.detected');
+			redirect('application/profile');
+		}
+		else if ($this->usermodel->email_exists($_POST['email'], $_POST['id']))
+		{
+			$_SESSION['request'] = $_POST;
+			$_SESSION['message'] = lang('account.email.exists');
+			redirect('application/profile');
+		}
+		else
+		{
+			$_POST['admin'] = $_SESSION['user']['admin'];
+			$_POST['active'] = $_SESSION['user']['active'];
+			$this->usermodel->update_user($_POST);
+			$_SESSION['message'] = lang('account.user.updated');
+			redirect('application/profile');
 		}
 	}
 

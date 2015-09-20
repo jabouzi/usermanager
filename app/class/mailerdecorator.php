@@ -13,24 +13,20 @@ class Mailerdecorator
 	public function decorateuser($user, $email)
 	{
 		$this->message = sprintf($email,
-				$user['user_first_name'],
-				$user['user_last_name'],
-				$user['user_name'],
-				$user['user_password'],
-				$user['user_first_name'],
-				$user['user_last_name'],
-				$user['user_name'],
-				$user['user_password']
-			);
-	}
-
-	public function decorateadmin($user, $email)
-	{
-		$this->message = sprintf($email,
 				$user['first_name'],
 				$user['last_name'],
 				$user['email'],
 				$user['password'],
+				$user['first_name'],
+				$user['last_name'],
+				$user['email'],
+				$user['password']
+			);
+	}
+
+	public function decoratepassword($user, $email)
+	{
+		$this->message = sprintf($email,
 				$user['first_name'],
 				$user['last_name'],
 				$user['email'],
@@ -43,7 +39,7 @@ class Mailerdecorator
 		try {
 			$this->mailer = new Mailer();
 			$this->mailer->setFrom("TGI", "contact@tonikgrupimage.com");
-			$this->mailer->addRecipient($user['user_first_name'].' '.$user['user_last_name'], $user['user_email']);
+			$this->mailer->addRecipient($user['first_name'].' '.$user['last_name'], $user['user_email']);
 			$this->mailer->fillSubject(lang('account.email.subject'));
 			$this->mailer->fillMessage($this->message);
 			$this->mailer->send();
@@ -53,13 +49,13 @@ class Mailerdecorator
 		}
 	}
 
-	public function sendadminmail($user)
+	public function sendpasswordmail($user)
 	{
 		try {
 			$this->mailer = new Mailer();
 			$this->mailer->setFrom("TGI", "contact@tonikgrupimage.com");
 			$this->mailer->addRecipient($user['first_name'].' '.$user['last_name'], $user['email']);
-			$this->mailer->fillSubject(lang('admin.email.subject'));
+			$this->mailer->fillSubject(lang('login.password'));
 			$this->mailer->fillMessage($this->message);
 			$this->mailer->send();
 		} catch (Exception $e) {

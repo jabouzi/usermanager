@@ -13,7 +13,7 @@ class Csvimportadapter
 	{
 		$row = 0;
 		$users = array();
-		$params = array('user_name', 'user_password', 'user_first_name', 'user_last_name', 'user_email', 'user_active');
+		$params = array('username', 'password', 'first_name', 'last_name', 'email', 'admin', 'active');
 		if (($handle = fopen($file, "r")) !== FALSE) {
 			while (($data = fgetcsv($handle, 1000, ";")) !== FALSE) {
 				if ($row)

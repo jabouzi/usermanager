@@ -10,7 +10,7 @@ if (islogged())
 				   '/'.get_site_lang().'/application/import'=> lang('title.import.accounts')
 				   );
 	}
-	$links['/'.get_site_lang().'/admin/profile'] = lang('title.profile');
+	$links['/'.get_site_lang().'/application/profile'] = lang('title.profile');
 	$links['/'.get_site_lang().'/login/logout'] = lang('login.logout');
 
 	
