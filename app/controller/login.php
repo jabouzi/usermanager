@@ -45,6 +45,7 @@ class Login extends Controller
 	{
 		$this->email_empty();
 		$this->check_user();
+		$this->sendemail();
 	}
 
 	public function logout()
@@ -62,11 +63,18 @@ class Login extends Controller
 		$this->set_user_session();
 	}
 	
+	private function check_user()
+	{
+		$this->user = $this->adminmodel->get_user($_POST['email']);
+		$this->user_inexistant();
+		$this->user_inactive();
+	}
+	
 	private function user_inexistant()
 	{
 		if (!$this->user)
 		{
-			$_SESSION['message'] = lang('login.failed');
+			$_SESSION['message'] = lang('login.account.not.exists');
 			redirect('login');
 		}
 	}
@@ -127,11 +135,11 @@ class Login extends Controller
 		redirect('application');
 	}
 	
-	private function sendemail($user, $edit = 0)
+	private function sendemail($edit = 0)
 	{
 		$lang = get_site_lang();
-		$text = array(APPPATH."public/docs/{$lang}/useremail.txt", APPPATH."public/docs/{$lang}/useremail2.txt");
-		$this->mailerdecorator->decorateuser($user, file_get_contents($text[$edit]));
-		$this->mailerdecorator->sendusermail($user);
+		$text = APPPATH."public/docs/{$lang}/useremail3.txt";
+		$this->mailerdecorator->decorateuser($this->user, file_get_contents($text));
+		$this->mailerdecorator->sendusermail($this->user);
 	}
 }
