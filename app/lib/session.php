@@ -15,7 +15,7 @@ class Session {
         $this->db->close();
     }
 
-    function _read($session_id)
+    public function _read($session_id)
     {
         $args = array(':session_id' => $session_id);
         $query = "SELECT user_data FROM sessions WHERE session_id = :session_id";
@@ -28,37 +28,41 @@ class Session {
 		return array();
     }
 
-    function _write($session_id, $user_data)
+    public function _write($session_id, $user_data)
     {
-        $args = array(':session_id' => $session_id,
-					':ip_address' => ip_address(),
-					':user_agent' => user_agent(),
-					':last_activity' => time(),
-					':user_data' => serialize($user_data));
-        $query = "REPLACE INTO sessions VALUES (:session_id, :ip_address, :user_agent, :last_activity, :user_data)";
-        return $this->db->query($query, $args);
+		if (!$this->session_exists($session_id))
+		{
+			$args = array(':session_id' => $session_id,
+						':ip_address' => ip_address(),
+						':user_agent' => user_agent(),
+						':last_activity' => time(),
+						':user_data' => serialize($user_data));
+			$query = "REPLACE INTO sessions VALUES (:session_id, :ip_address, :user_agent, :last_activity, :user_data)";
+			return $this->db->query($query, $args);
+		}
     }
 
-    function _destroy($session_id) {
+    public function _destroy($session_id) {
         $args = array(':session_id' => $session_id);
-        $query = "DELETE FROM sessions WHERE session_id = ':session_id'";
+        $query = "DELETE FROM sessions WHERE session_id = :session_id";
         return $this->db->query($query, $args);
     }
 
-    function _gc($max)
+    public function _gc($max)
     {
         $old = time() - $max;
 		$args = array(':old' => $old);
-        $query = "DELETE FROM sessions  WHERE last_activity < ':old'";
-        return $this->db->query($query, $args);
+        $query = "DELETE FROM sessions  WHERE last_activity < :old";
+        $res = $this->db->query($query, $args);
+        mail('jabouzi@gmail.com', 'session', $max . ' ' . print_r($args, true) . ' ' . $res);
+        return $res;
     }
-
-    //public function killUserSession($username)
-    //{
-		//$args = array(':username' => $username);
-        //$query = "delete from sessions where data like('%userID|s:%\":username%\";first_name|s:%')";
-        //$this->db->query($query);
-    //}  
-
+    
+    private function session_exists($session_id)
+    {
+		$args = array(':session_id' => $session_id);
+        $query = "SELECT * FROM sessions WHERE session_id = :session_id";
+        $res = $this->db->query($query, $args);
+        return count($res);
+	}
 }
-?>
