@@ -1,8 +1,0 @@
-Bonjour %s %s,
-
-Votre compte admin pour les sites staging été créé
-Votre identifiant est : %s
-Votre mot de passe est : %s
-Le lien de l'application : http://lenomdevotrecompagnie.com/
-
-Merci.
