@@ -10,9 +10,9 @@ class Mailerdecorator
 
 	}
 
-	public function decorateuser($user, $email)
+	public function decorateuser($user, $message)
 	{
-		$this->message = sprintf($email,
+		$this->message = sprintf($message,
 				$user['first_name'],
 				$user['last_name'],
 				$user['email'],
@@ -24,9 +24,13 @@ class Mailerdecorator
 			);
 	}
 
-	public function decoratepassword($user, $email)
+	public function decoratepassword($user, $message)
 	{
-		$this->message = sprintf($email,
+		$this->message = sprintf($message,
+				$user['first_name'],
+				$user['last_name'],
+				$user['email'],
+				$user['password'],
 				$user['first_name'],
 				$user['last_name'],
 				$user['email'],
@@ -39,7 +43,7 @@ class Mailerdecorator
 		try {
 			$this->mailer = new Mailer();
 			$this->mailer->setFrom("TGI", "contact@tonikgrupimage.com");
-			$this->mailer->addRecipient($user['first_name'].' '.$user['last_name'], $user['user_email']);
+			$this->mailer->addRecipient($user['first_name'].' '.$user['last_name'], $user['email']);
 			$this->mailer->fillSubject(lang('account.email.subject'));
 			$this->mailer->fillMessage($this->message);
 			$this->mailer->send();
