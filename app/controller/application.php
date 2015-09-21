@@ -41,7 +41,6 @@ class Application extends Controller
 	{
 		$user = $this->usermodel->get_user($_SESSION['user']['email']);
 		$data['user'] = $user;
-		$_SESSION['user_edit'] = $user->__toArray();
 		$data['title'] = lang('title.profile');
 		view::load_view('default/standard/header', $data);
 		view::load_view('default/standard/menu');
@@ -149,12 +148,12 @@ class Application extends Controller
 	
 	public function processprofile()
 	{
-		if ($_SESSION['user_edit']['id'] != $_POST['id'])
+		if ($_SESSION['user']['id'] != $_POST['id'])
 		{
 			$_SESSION['message'] = lang('account.security.detected');
 			redirect('application/profile');
 		}
-		else if ($_SESSION['user_edit']['username'] != $_POST['username'])
+		else if ($_SESSION['user']['username'] != $_POST['username'])
 		{
 			$_SESSION['message'] = lang('account.security.detected');
 			redirect('application/profile');
@@ -170,6 +169,7 @@ class Application extends Controller
 			$_POST['admin'] = $_SESSION['user']['admin'];
 			$_POST['active'] = $_SESSION['user']['active'];
 			$this->usermodel->update_user($_POST);
+			$_SESSION['user'] = $this->usermodel->get_user($_POST['email'])->__toArray();
 			$_SESSION['message'] = lang('account.user.updated');
 			redirect('application/profile');
 		}
@@ -212,7 +212,7 @@ class Application extends Controller
 					$this->sendemail($user, self::ADD);
 				}
 			}
-			//redirect('application');
+			redirect('application');
 		}
 	}
 

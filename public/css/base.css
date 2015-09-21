@@ -1,6 +1,10 @@
 ﻿/* CSS Document skiquebec/membres Tonikgroupimages.com m.parent ²¦¬) */
 /* a, a:link, a:visited || a:hover, a:visited:hover, a:active, a:focus */
 /* RESET :: XHTML, HTML4, HTML5 Reset */
+.error_input {
+    border: 2px solid #FF0000!important;
+}
+
 a, abbr, acronym, address, applet, article, aside, audio, b, big, blockquote, body, canvas, caption, center, cite, code, dd, del, details, dfn, dialog, div, dl, dt, em, embed, fieldset, figcaption, figure, font, footer, form, h1, h2, h3, h4, h5, h6, header, hgroup, hr, html, i, iframe, img, ins, kbd, label, legend, li, mark, menu, meter, nav, object, ol, output, p, pre, progress, q, rp, rt, ruby, s, samp, section, small, span, strike, strong, sub, summary, sup, time, tr, tt, u, ul, var, video, xmp{border:0;margin:0;padding:0}
 html, body, p, ul, ol, li, dl, dt, dd, h1, h2, h3, h4, img, form{background-color:transparent;border:0;font-size:100%;margin:0;outline:0;padding:0;vertical-align:baseline}
 html{overflow-y:scroll}
@@ -263,5 +267,3 @@ select {
     /*float: left;*/
     margin-right: 2px;
 }
-
-

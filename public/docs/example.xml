@@ -1,12 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <users_infos>
 	<info>
-		<username>maradonna</username>
-		<password>diego</password>
-		<first_name>Diego</first_name>
-		<last_name>Maradonne</last_name>
-		<email>diego@maradonna.com</email>
+		<username>admin</username>
+		<password>admin</password>
+		<first_name>Admin</first_name>
+		<last_name>Admin</last_name>
+		<email>admin@admin.com</email>
 		<admin>1</admin>
 		<active>1</active>
+	</info>
+	<info>
+		<username>admin1</username>
+		<password>admin1</password>
+		<first_name>Admin1</first_name>
+		<last_name>Admin1</last_name>
+		<email>admin1@admin.com</email>
+		<admin>0</admin>
+		<active>0</active>
 	</info>
 </users_infos>
