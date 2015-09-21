@@ -9,7 +9,12 @@ class Mailerdecorator
 	{
 
 	}
-
+	
+	public function decorate($mesagedata, $message)
+	{
+		$this->message = vsprintf($message, $mesagedata);
+	}
+	
 	public function decorateuser($user, $message)
 	{
 		$this->message = sprintf($message,

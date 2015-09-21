@@ -28,7 +28,7 @@ session_set_save_handler(
   array(&$session, "_read"),
   array(&$session, "_write"),
   array(&$session, "_destroy"),
-  array(&$session, "_gc")
+  array(&$session, "_clean")
 );
 
 session_start();
