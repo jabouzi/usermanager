@@ -134,7 +134,7 @@ class Login extends Controller
 		}
 	}
 	
-	private function set_user_session($user)
+	private function set_user_session()
 	{
 		$_SESSION['user'] = $this->user->__toArray();
 		redirect('application');
