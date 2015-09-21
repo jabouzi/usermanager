@@ -24,27 +24,27 @@ class Userimport
 
 	public function insert($userdata, $key)
 	{
-		$params = array('user_name', 'user_password', 'user_first_name', 'user_last_name', 'user_email');
+		$params = array('username', 'password', 'first_name', 'last_name', 'email');
 		$errors_count = 0;
 		foreach ($params as $param)
 		{
 			$errors_count += $this->checkitem($userdata, $param, $key);
 		}
 
-		if ($this->usermodel->user_name_exists($userdata['user_name']))
+		if ($this->usermodel->username_exists($userdata['username']))
 		{
 			$errors_count++;
-			$this->set_message('user :'.$userdata['user_name'].' '.lang('account.user.name.exists').'<br />');
+			$this->set_message('user :'.$userdata['name'].' '.lang('account.user.name.exists').'<br />');
 		}
-		if ($this->usermodel->user_email_exists($userdata['user_email']))
+		if ($this->usermodel->email_exists($userdata['email']))
 		{
 			$errors_count++;
-			$this->set_message('user :'.$userdata['user_email'].' '.lang('account.email.exists').'<br />');
+			$this->set_message('user :'.$userdata['email'].' '.lang('account.email.exists').'<br />');
 		}
 
 		if (!$errors_count)
 		{
-			$this->set_message('user :'.$userdata['user_name'].' '.lang('account.user.added').'<br />');
+			$this->set_message('user :'.$userdata['username'].' '.lang('account.user.added').'<br />');
 			$this->usermodel->add_user($userdata);
 		}
 		
@@ -64,7 +64,7 @@ class Userimport
 	private function checkitem($userdata, $param, $key)
 	{
 		if (get_item($userdata, $param) && !isempty($userdata[$param]))	return 0;
-		$this->set_message(sptrinf(lang('account.param.empty'), $param).'<br />');
+		$this->set_message(sprintf(lang('account.param.empty'), $param).'<br />');
 		return 1;
 	}
 }

@@ -22,8 +22,8 @@ class Userdatadao {
 			':admin' => $user->get_admin(),
 			':active' => $user->get_active()
 		);
-		$query = "INSERT INTO user_data (name, password, email, first_name, last_name, admin, active)
-				VALUES (:name, :password, :email, :first_name, :last_name, :admin, :active)";
+		$query = "INSERT INTO user_data (id, username, password, email, first_name, last_name, admin, active)
+				VALUES ('', :username, :password, :email, :first_name, :last_name, :admin, :active)";
 		$insert = $this->db->query($query, $args);
 		return $insert;
 	}
