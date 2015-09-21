@@ -4,11 +4,13 @@ class Login extends Controller
 {
 	private $user;
 	private $usermodel;
+	private $maildecorator;
 
 	function __construct()
 	{
 		$this->user = new userdata();
 		$this->usermodel = new usermodel();
+		$this->mailerdecorator = new mailerdecorator();
 	}
 
 	public function index()
@@ -43,12 +45,17 @@ class Login extends Controller
 	
 	public function processpwd()
 	{
+		$this->user = $this->usermodel->get_user($_POST['email']);
 		$this->email_empty();
 		$this->check_user();
 		$password = substr(str_shuffle(strtolower(sha1(rand() . time() . $this->user->get_email()))),0, 8);
 		$this->user->set_password($password);
-		$this->user->update_user($this->user->__toArray());
-		$this->sendemail();
+		$_SESSION['user'] = $this->user->__toArray();
+		$this->usermodel->update_user($_SESSION['user']);
+		$this->sendemail($_SESSION['user']);
+		unset($_SESSION['user']);
+		$_SESSION['message'] = lang('login.password.send');
+		redirect('login');
 	}
 
 	public function logout()
@@ -133,11 +140,11 @@ class Login extends Controller
 		redirect('application');
 	}
 	
-	private function sendemail($edit = 0)
+	private function sendemail($user, $edit = 0)
 	{
 		$lang = get_site_lang();
 		$text = APPPATH."public/docs/{$lang}/useremail3.txt";
-		$this->mailerdecorator->decorateuser($this->user, file_get_contents($text));
-		$this->mailerdecorator->sendusermail($this->user);
+		$this->mailerdecorator->decoratepassword($user, file_get_contents($text));
+		$this->mailerdecorator->sendpasswordmail($user);
 	}
 }
