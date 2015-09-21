@@ -1,8 +1,0 @@
-Hello %s %s 
-
-Your admin account for staging site was created 
-Your username is:%s 
-Your password is:%s 
-The application link: http://yourcompanyname.com/ 
-
-Thank you.
