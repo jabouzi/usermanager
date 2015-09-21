@@ -15,7 +15,6 @@
 │   └── view
 │       └── default
 │           ├── accounts
-│           ├── admins
 │           ├── index
 │           ├── login
 │           └── standard
@@ -23,7 +22,13 @@
 ├── core
 │   └── template
 ├── css
+├── help
+│   └── assets
+│       └── css
 ├── js
+├── newtemplate
+│   ├── css
+│   └── includes
 └── public
     ├── css
     │   └── smoothness-1.8.13
@@ -32,6 +37,7 @@
     │   ├── en
     │   ├── es
     │   └── fr
+    ├── img
     └── js
 
-34 directories
+40 directories
