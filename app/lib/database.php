@@ -122,7 +122,6 @@ class Database {
 			echo 'Query failed: ' . $e->getMessage();
 			echo '<br />Query : ' . $query;
 		}
-		return 1;
 	}
 
 	/**

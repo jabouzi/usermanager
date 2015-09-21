@@ -76,15 +76,20 @@ class Usermodel extends Model
 		return $users;
 	}
 
-	public function email_exists($email, $id)
+	public function email_exists($email, $id = 0)
 	{
 		$and = '';
 		$args = array(
-			':id' => $id,
 			':email' => $email
 		);
 		
-		$query = "SELECT count(*) as count FROM user_data WHERE email = :email AND id != :id ";
+		$sql_id = '';
+		if ($id)
+		{
+			$sql_id = ' AND id != :id ';
+			$args[':id'] = $id;
+		}
+		$query = "SELECT count(*) as count FROM user_data WHERE email = :email {$sql_id}";
 		$count = $this->db->query($query, $args);
 		return intval($count[0]['count']);
 	}

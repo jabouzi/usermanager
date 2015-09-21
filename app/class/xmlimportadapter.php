@@ -13,9 +13,9 @@ class Xmlimportadapter
 	{
 		$racine = simplexml_load_file($file);
 		$index = 0;
-		foreach ($racine->user_info as $usr_info) 
+		foreach ($racine->info as $usr_info) 
 		{
-			if (count((array)$usr_info) == 6)
+			if (count((array)$usr_info) == 7)
 			{
 				$users[$index] = (array)$usr_info;
 				$index++;

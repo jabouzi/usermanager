@@ -201,7 +201,7 @@ class Application extends Controller
 		else
 		{
 			$tmp_name = $_FILES["accountsfile"]["tmp_name"];
-			$name = $_FILES["accountsfile"]["name"];
+			$name = time().$_FILES["accountsfile"]["name"];
 			move_uploaded_file($tmp_name, "/tmp/$name");
 			$import = Userimportfactory::create($ext);
 			$users = $import->import("/tmp/$name");
@@ -212,7 +212,7 @@ class Application extends Controller
 					$this->sendemail($user, self::ADD);
 				}
 			}
-			redirect('application');
+			//redirect('application');
 		}
 	}
 

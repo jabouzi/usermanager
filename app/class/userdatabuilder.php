@@ -13,7 +13,7 @@ class Userdatabuilder
 	public function build()
 	{
 		$this->user = new Userdata();
-		$this->user->set_id($this->user_data['id']);
+		if (isset($this->user_data['id'])) $this->user->set_id($this->user_data['id']);
 		$this->user->set_username($this->user_data['username']);
 		$this->user->set_password($this->user_data['password']);
 		$this->user->set_email($this->user_data['email']);
