@@ -21,12 +21,20 @@ foreach($config['autoload_languages'] as $file)
 }
 
 $session = new Session();
-session_set_save_handler(array(&$session, '_open'),
-                         array(&$session, '_close'),
-                         array(&$session, '_read'),
-                         array(&$session, '_write'),
-                         array(&$session, '_destroy'),
-                         array(&$session, '_clean'));
+//session_set_save_handler(array(&$session, '_open'),
+                         //array(&$session, '_close'),
+                         //array(&$session, '_read'),
+                         //array(&$session, '_write'),
+                         //array(&$session, '_destroy'),
+                         //array(&$session, '_clean'));
+session_set_save_handler(
+  array(&$session, "_open"),
+  array(&$session, "_close"),
+  array(&$session, "_read"),
+  array(&$session, "_write"),
+  array(&$session, "_destroy"),
+  array(&$session, "_gc")
+);
 session_start();
 $params = get_controller_params($_GET);
 

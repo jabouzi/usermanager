@@ -41,11 +41,11 @@ class Session {
 
     function _destroy($session_id) {
         $args = array(':session_id' => $session_id);
-        $query = "DELETE FROM sessions WHERE id = ':id'";
+        $query = "DELETE FROM sessions WHERE session_id = ':session_id'";
         return $this->db->query($query, $args);
     }
 
-    function _clean($max)
+    function _gc($max)
     {
         $old = time() - $max;
 		$args = array(':old' => $old);
@@ -53,12 +53,12 @@ class Session {
         return $this->db->query($query, $args);
     }
 
-    public function killUserSession($username)
-    {
-		$args = array(':username' => $username);
-        $query = "delete from sessions where data like('%userID|s:%\":username%\";first_name|s:%')";
-        $this->db->query($query);
-    }  
+    //public function killUserSession($username)
+    //{
+		//$args = array(':username' => $username);
+        //$query = "delete from sessions where data like('%userID|s:%\":username%\";first_name|s:%')";
+        //$this->db->query($query);
+    //}  
 
 }
 ?>
