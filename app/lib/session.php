@@ -30,16 +30,25 @@ class Session {
 
     public function _write($session_id, $user_data)
     {
+		$this->_clean(ini_get("session.gc_maxlifetime"));
 		if (!$this->session_exists($session_id))
 		{
 			$args = array(':session_id' => $session_id,
-						':ip_address' => ip_address(),
-						':user_agent' => user_agent(),
-						':last_activity' => time(),
-						':user_data' => serialize($user_data));
-			$query = "REPLACE INTO sessions VALUES (:session_id, :ip_address, :user_agent, :last_activity, :user_data)";
-			return $this->db->query($query, $args);
+					':ip_address' => ip_address(),
+					':user_agent' => user_agent(),
+					':last_activity' => time(),
+					':user_data' => serialize($user_data));
+			$query = "REPLACE INTO sessions (session_id, ip_address, user_agent, last_activity, user_data) VALUES (:session_id, :ip_address, :user_agent, :last_activity, :user_data)";
 		}
+		else
+		{
+			$args = array(':session_id' => $session_id,
+					':user_data' => serialize($user_data));
+			$query = "UPDATE sessions SET user_data = :user_data WHERE session_id = :session_id";
+		}
+
+		return $this->db->query($query, $args);
+		
     }
 
     public function _destroy($session_id) {
@@ -48,13 +57,12 @@ class Session {
         return $this->db->query($query, $args);
     }
 
-    public function _gc($max)
+    public function _clean($max)
     {
         $old = time() - $max;
 		$args = array(':old' => $old);
         $query = "DELETE FROM sessions  WHERE last_activity < :old";
         $res = $this->db->query($query, $args);
-        mail('jabouzi@gmail.com', 'session', $max . ' ' . print_r($args, true) . ' ' . $res);
         return $res;
     }
     
@@ -63,6 +71,6 @@ class Session {
 		$args = array(':session_id' => $session_id);
         $query = "SELECT * FROM sessions WHERE session_id = :session_id";
         $res = $this->db->query($query, $args);
-        return count($res);
+        return $res;
 	}
 }
