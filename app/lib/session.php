@@ -7,6 +7,7 @@ class Session {
     public function _open($save_path, $session_name)
     {
         $this->db = Database::getInstance();
+        $this->_clean(ini_get("session.gc_maxlifetime"));
         return true;
     }
 
@@ -30,8 +31,7 @@ class Session {
 
     public function _write($session_id, $user_data)
     {
-		$this->_clean(ini_get("session.gc_maxlifetime"));
-		if (!$this->session_exists($session_id))
+		if (!count($this->session_exists($session_id)))
 		{
 			$args = array(':session_id' => $session_id,
 					':ip_address' => ip_address(),
@@ -61,7 +61,7 @@ class Session {
     {
         $old = time() - $max;
 		$args = array(':old' => $old);
-        $query = "DELETE FROM sessions  WHERE last_activity < :old";
+        $query = "DELETE FROM sessions WHERE last_activity < :old";
         $res = $this->db->query($query, $args);
         return $res;
     }
