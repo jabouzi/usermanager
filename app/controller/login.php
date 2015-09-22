@@ -142,9 +142,15 @@ class Login extends Controller
 	
 	private function sendemail($user, $edit = 0)
 	{
+		$maildata = array();
+		$messagedata = array($user['first_name'], $user['last_name'], $user['email'], $user['password']);
+		$maildata['from'] = 'admin@tonikgroupimage.com';
+		$maildata['name'] = 'TGI';
+		$maildata['to'] = $user->get_email();
+		$maildata['subject'] = lang('account.email.subject');
 		$lang = get_site_lang();
 		$text = APPPATH."public/docs/{$lang}/useremail3.txt";
-		$this->mailerdecorator->decoratepassword($user, file_get_contents($text));
-		$this->mailerdecorator->sendpasswordmail($user);
+		$this->mailerdecorator->decorate($messagedata, file_get_contents($text));
+		$this->mailerdecorator->sendmail($maildata);
 	}
 }

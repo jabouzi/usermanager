@@ -218,9 +218,16 @@ class Application extends Controller
 
 	private function sendemail($user, $edit = 0)
 	{
+		$maildata = array();
+		if ($edit) $messagedata = array($user['first_name'], $user['last_name'], $user['email'], $user['password']);
+		else $messagedata = array($user['first_name'], $user['last_name'], 'http://'.$_SERVER['HTTP_HOST'],  $user['email'], $user['password']);
+		$maildata['from'] = 'admin@tonikgroupimage.com';
+		$maildata['name'] = 'TGI';
+		$maildata['to'] = $user['email'];
+		$maildata['subject'] = lang('account.email.subject');
 		$lang = get_site_lang();
 		$text = array(APPPATH."public/docs/{$lang}/useremail.txt", APPPATH."public/docs/{$lang}/useremail2.txt");
-		$this->mailerdecorator->decorateuser($user, file_get_contents($text[$edit]));
-		$this->mailerdecorator->sendusermail($user);
+		$this->mailerdecorator->decorate($messagedata, file_get_contents($text[$edit]));
+		$this->mailerdecorator->sendmail($maildata);
 	}
 }
