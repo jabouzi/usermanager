@@ -42,6 +42,21 @@ class Mailerdecorator
 				$user['password']
 			);
 	}
+	
+	public function sendmail($maildata)
+	{
+		try {
+			$this->mailer = new Mailer();
+			$this->mailer->setFrom($maildata['name'], $maildata['from']);
+			$this->mailer->addRecipient($maildata['firstname'].' '.$maildata['lastname'], $maildata['to']);
+			$this->mailer->fillSubject($maildata['subject']);
+			$this->mailer->fillMessage($this->message);
+			$this->mailer->send();
+		} catch (Exception $e) {
+			echo $e->getMessage();
+			exit(0);
+		}
+	}
 
 	public function sendusermail($user)
 	{
