@@ -146,7 +146,7 @@ class Login extends Controller
 		$messagedata = array($user['first_name'], $user['last_name'], $user['email'], $user['password']);
 		$maildata['from'] = 'admin@tonikgroupimage.com';
 		$maildata['name'] = 'TGI';
-		$maildata['to'] = $user->get_email();
+		$maildata['to'] = $user['email'];
 		$maildata['subject'] = lang('account.email.subject');
 		$maildata['first_name'] = $user['first_name'];
 		$maildata['last_name'] = $user['last_name'];
