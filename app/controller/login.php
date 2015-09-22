@@ -148,6 +148,8 @@ class Login extends Controller
 		$maildata['name'] = 'TGI';
 		$maildata['to'] = $user->get_email();
 		$maildata['subject'] = lang('account.email.subject');
+		$maildata['first_name'] = $user['first_name'];
+		$maildata['last_name'] = $user['last_name'];
 		$lang = get_site_lang();
 		$text = APPPATH."public/docs/{$lang}/useremail3.txt";
 		$this->mailerdecorator->decorate($messagedata, file_get_contents($text));

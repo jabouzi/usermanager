@@ -225,6 +225,8 @@ class Application extends Controller
 		$maildata['name'] = 'TGI';
 		$maildata['to'] = $user['email'];
 		$maildata['subject'] = lang('account.email.subject');
+		$maildata['first_name'] = $user['first_name'];
+		$maildata['last_name'] = $user['last_name'];
 		$lang = get_site_lang();
 		$text = array(APPPATH."public/docs/{$lang}/useremail.txt", APPPATH."public/docs/{$lang}/useremail2.txt");
 		$this->mailerdecorator->decorate($messagedata, file_get_contents($text[$edit]));
