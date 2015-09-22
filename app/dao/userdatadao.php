@@ -53,6 +53,7 @@ class Userdatadao {
 
 	public function delete_user($username)
 	{
+		$delete = 0;
 		$args = array(':username' => $username);
 		$query = "DELETE FROM user_data WHERE username = :username";
 		$delete += $this->db->query($query, $args);
