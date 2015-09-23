@@ -21,18 +21,12 @@
 ├── cache
 ├── core
 │   └── template
-├── css
 ├── help
 │   └── assets
 │       └── css
 ├── js
-├── newtemplate
-│   ├── css
-│   └── includes
 └── public
     ├── css
-    │   └── smoothness-1.8.13
-    │       └── images
     ├── docs
     │   ├── en
     │   ├── es
@@ -40,4 +34,4 @@
     ├── img
     └── js
 
-40 directories
+34 directories
