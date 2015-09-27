@@ -1,4 +1,4 @@
-Hello %s %s 
+Bonjour %s %s 
 
 Vous avez demandez votre mot de passe.
 Votre identifiant est : %s 
