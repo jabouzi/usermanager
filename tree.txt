@@ -3,35 +3,21 @@
 │   ├── class
 │   ├── config
 │   ├── controller
+	│ 	└── 
 │   ├── dao
 │   ├── helper
 │   ├── languages
-│   │   ├── en
-│   │   ├── es
-│   │   └── fr
+│   │   ├── 
 │   ├── lib
-│   │   └── php-excel
+│   │   └── 
 │   ├── model
+	│ 	└── 
 │   └── view
-│       └── default
-│           ├── accounts
-│           ├── index
-│           ├── login
-│           └── standard
-├── cache
+│       └── 
 ├── core
-│   └── template
-├── help
-│   └── assets
-│       └── css
-├── js
+│   └── 
 └── public
     ├── css
     ├── docs
-    │   ├── en
-    │   ├── es
-    │   └── fr
     ├── img
     └── js
-
-34 directories
