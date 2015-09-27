@@ -13,7 +13,7 @@ class Cachefactory {
 	function __construct()
 	{
 		if ( extension_loaded('memcached')) $this->cache = new Memcached();
-		else $this->cache = new Memcache();
+		else if ( extension_loaded('memcache')) $this->cache = new Memcache();
 		$this->connect($this->cache_conf['host'], $this->cache_conf['port']);
 	}
 
