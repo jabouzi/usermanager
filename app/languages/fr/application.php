@@ -60,4 +60,3 @@ $lang['login.account.not.exists'] = 'Aucun compte trouvé avec ce couuriel';
 $lang['login.send'] = 'Envoyer';
 $lang['login.password.send'] = 'Votre mot de passe a été envoyé à votre courriel';
 $lang['account.email.subject'] = 'Compte usermanager';
-$lang['demo.warning'] = 'La base de données sera remise à zéro chaque 15 minutes';
