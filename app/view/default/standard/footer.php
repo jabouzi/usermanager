@@ -5,7 +5,6 @@
 						<?php display_languages(); ?>
 					</div>
 				</div>
-				<span style="color:red"><?php echo lang('demo.warning'); ?></span>
 			</div>
 		</div>
 	</body>
