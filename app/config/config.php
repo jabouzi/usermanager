@@ -1,7 +1,7 @@
 <?php
 
 $config['default'] = 'application';
-$config['lang'] = 'fr';
+$config['lang'] = 'en';
 if (strstr($_SERVER['HTTP_HOST'], 'jabouzi.com'))
 {
 	$config['database'] = 'jabouzic_usermanager';
@@ -18,6 +18,6 @@ else
 }
 
 $config['driver'] = 'mysql';
-$config['site_languages'] = array('fr', 'en', 'es');
+$config['site_languages'] = array('fr', 'en');
 $config['autoload_helpers'] = array('functions');
 $config['autoload_languages'] = array('application');

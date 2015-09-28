@@ -58,5 +58,5 @@ $lang['login.account.nonactive'] = 'Your account is not active';
 $lang['login.account.not.exists'] = 'No account found with this email';
 $lang['login.send'] = 'Send';
 $lang['login.password.send'] = 'Your password has been send to your email';
-$lang['account.email.subject'] = 'Tonik Stagin account';
-$lang['admin.email.subject'] = 'Tonik Stagin admin';
+$lang['account.email.subject'] = 'Usermanager account';
+$lang['demo.warning'] = 'The database will be reset every 15 minutes';
