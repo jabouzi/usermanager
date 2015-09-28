@@ -6,6 +6,7 @@
 					</div>
 				</div>
 			</div>
+			<span style="color:red"><?php echo lang('demo.warning'); ?></span>
 		</div>
 	</body>
 </html>
