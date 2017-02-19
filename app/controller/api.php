@@ -129,7 +129,8 @@ class Api extends Controller
 	{
 		if (!$this->user->get_id())
 		{
-			echo json_encode(array('success' => lang('login.account.not.exists')));
+			echo json_encode(array('error' => lang('login.account.not.exists')));
+			return;
 		}
 	}
 	
@@ -137,7 +138,8 @@ class Api extends Controller
 	{
 		if (!$this->user->get_active())
 		{
-			echo json_encode(array('success' => lang('login.account.nonactive')));
+			echo json_encode(array('error' => lang('login.account.nonactive')));
+			return;
 		}
 	}
 	
@@ -145,7 +147,8 @@ class Api extends Controller
 	{
 		if ($this->user->get_password() != $password)
 		{
-			echo json_encode(array('success' => lang('login.failed')));
+			echo json_encode(array('error' => lang('login.failed')));
+			return;
 		}
 	}
 	
@@ -153,7 +156,8 @@ class Api extends Controller
 	{
 		if (isempty($email)) 
 		{
-			echo json_encode(array('success' => lang('login.email.empty')));
+			echo json_encode(array('error' => lang('login.email.empty')));
+			return;
 		}
 	}
 	
@@ -161,7 +165,8 @@ class Api extends Controller
 	{
 		if (isempty($email)) 
 		{
-			echo json_encode(array('success' => lang('login.email.empty')));
+			echo json_encode(array('error' => lang('login.email.empty')));
+			return;
 		}
 	}
 	
@@ -169,7 +174,8 @@ class Api extends Controller
 	{
 		if (isempty($password))
 		{
-			echo json_encode(array('success' => lang('login.password.empt')));
+			echo json_encode(array('error' => lang('login.password.empt')));
+			return;
 		}
 	}
 	
