@@ -40,7 +40,7 @@ class Api extends Controller
 		echo json_encode(array('success' => lang('account.user.delete')));
 	}
 
-	public function add($username, $password, $email, $first_name, $last_name, $admin, $active)
+	public function add($username, $password, $email, $first_name, $last_name)
 	{
 		if ($this->usermodel->email_exists($email))
 		{
@@ -67,7 +67,7 @@ class Api extends Controller
 		}
 	}
 
-	public function edit($id, $username, $password, $email, $first_name, $last_name, $admin, $active)
+	public function edit($id, $username, $password, $email, $first_name, $last_name)
 	{
 		if ($this->usermodel->email_exists($email))
 		{
