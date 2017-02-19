@@ -89,7 +89,7 @@ CREATE TABLE `user_data` (
   PRIMARY KEY (`id`),
   KEY `email` (`email`(255)),
   KEY `admin` (`admin`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -112,3 +112,13 @@ UNLOCK TABLES;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
 -- Dump completed on 2015-09-27 19:08:30
+
+CREATE TABLE `geolocations` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `email` varchar(256) NOT NULL,
+  `latitude` decimal(11, 8) not null default 0.0,
+  `longitude` decimal(11, 8) not null default 0.0,
+  `timsestamp` text COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `email_idx` (`email`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
