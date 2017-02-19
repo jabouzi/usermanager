@@ -111,8 +111,6 @@ function print_post_text($key, $othertext = '')
 function lang($key)
 {
 	global $lang;
-	var_dump($lang);
-	if (isset($lang)) $lang = 'en';
 	$text = get_item($lang, $key);
 	return (!isempty($text)) ? $text : $key;
 }

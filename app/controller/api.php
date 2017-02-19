@@ -103,7 +103,7 @@ class Api extends Controller
 		else if (!$this->password_empty($password)) return;
 		else if (!$this->check_login($email, $password)) return;
 		else { 
-			echo json_encode(array('success' => lang('login.login'))); 
+			echo json_encode(array('success' => lang('title.login'))); 
 		}
 	}
 	
