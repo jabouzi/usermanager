@@ -5,11 +5,13 @@ class Api extends Controller
 	private $usermodel;
 	private $mailerdecorator;
 	private $encrypt;
+	private $user;
 	const EDIT = 1;
 	const ADD = 0;
 
 	function __construct()
 	{
+		$this->user = new userdata();
 		$this->usermodel = new usermodel();
 		$this->mailerdecorator = new mailerdecorator();
 		$this->encrypt = new encryption();
@@ -92,6 +94,86 @@ class Api extends Controller
 				$user = $this->usermodel->get_user($user['username'])->__toArray();
 				echo json_encode(array('success' => lang('account.user.updated')));
 			}
+		}
+	}
+	
+	public function login($email, $password)
+	{
+		$this->username_empty($email);
+		$this->password_empty($password);
+		$this->check_login($email);
+	}
+	
+	public function logout()
+	{
+		echo json_encode(array('success' => lang('login.logout')));
+	}
+
+	private function check_login($email)
+	{
+		$this->user = $this->usermodel->get_user($email);
+		$this->user_inexistant();
+		$this->user_inactive();
+		$this->user_worg_password();
+		$this->set_user_session();
+	}
+	
+	private function check_user($email)
+	{
+		$this->user = $this->usermodel->get_user($email);
+		$this->user_inexistant();
+		$this->user_inactive();
+	}
+	
+	private function user_inexistant()
+	{
+		if (!$this->user->get_id())
+		{
+			echo json_encode(array('success' => lang('login.account.not.exists')));
+			$_SESSION['message'] = lang('login.account.not.exists');
+			redirect('login');
+		}
+	}
+	
+	private function user_inactive()
+	{
+		if (!$this->user->get_active())
+		{
+			$_SESSION['message'] = lang('login.account.nonactive');
+			redirect('login');
+		}
+	}
+	
+	private function user_worg_password($password)
+	{
+		if ($this->user->get_password() != $password)
+		{
+			$_SESSION['message'] = lang('login.failed');
+			redirect('login');
+		}
+	}
+	
+	private function username_empty($email)
+	{
+		if (isempty($email)) 
+		{
+			$_SESSION['message'] = lang('login.email.empty');
+		}
+	}
+	
+	private function email_empty($email)
+	{
+		if (isempty($email)) 
+		{
+			$_SESSION['message'] = lang('login.email.empty');
+		}
+	}
+	
+	private function password_empty($password)
+	{
+		if (isempty($password))
+		{
+			$_SESSION['message'] = lang('login.password.empty');
 		}
 	}
 	
