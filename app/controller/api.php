@@ -32,19 +32,19 @@ class Application extends Controller
 	public function delete($username)
 	{
 		$this->usermodel->delete_user($username);
-		echo json_encode(array('success' => lang('account.user.delete'));
+		echo json_encode(array('success' => lang('account.user.delete')));
 	}
 
 	public function add($username, $password, $email, $first_name, $last_name, $admin, $active)
 	{
 		if ($this->usermodel->email_exists($email))
 		{
-			echo json_encode(array('error' => lang('account.email.exists'));
+			echo json_encode(array('error' => lang('account.email.exists')));
 			redirect('application/add');
 		}
 		else if ($this->usermodel->username_exists($_POST['username']))
 		{
-			echo json_encode(array('error' => lang('account.user.name.exists'));
+			echo json_encode(array('error' => lang('account.user.name.exists')));
 		}
 		else
 		{
@@ -66,7 +66,7 @@ class Application extends Controller
 	{
 		if ($this->usermodel->email_exists($email))
 		{
-			echo json_encode(array('error' => lang('account.email.exists'));
+			echo json_encode(array('error' => lang('account.email.exists')));
 		}
 		else
 		{
@@ -84,7 +84,7 @@ class Application extends Controller
 			{
 				$this->usermodel->update_user($user);
 				$user = $this->usermodel->get_user($user['username'])->__toArray();
-				echo json_encode(array('success' => lang('account.user.updated'));
+				echo json_encode(array('success' => lang('account.user.updated')));
 			}
 		}
 	}
