@@ -99,10 +99,12 @@ class Api extends Controller
 	
 	public function login($email, $password)
 	{
-		$this->username_empty($email);
-		$this->password_empty($password);
-		$this->check_login($email, $password);
-		echo json_encode(array('success' => lang('login.login')));
+		if $this->username_empty($email);
+		else if $this->password_empty($password);
+		else $this->check_login($email, $password);
+		else { 
+			echo json_encode(array('success' => lang('login.login'))); 
+		}
 	}
 	
 	public function logout()
@@ -130,8 +132,9 @@ class Api extends Controller
 		if (!$this->user->get_id())
 		{
 			echo json_encode(array('error' => lang('login.account.not.exists')));
-			return;
+			return 0;
 		}
+		return 1;
 	}
 	
 	private function user_inactive()
@@ -139,8 +142,9 @@ class Api extends Controller
 		if (!$this->user->get_active())
 		{
 			echo json_encode(array('error' => lang('login.account.nonactive')));
-			return;
+			return 0;
 		}
+		return 1;
 	}
 	
 	private function user_worg_password($password)
@@ -148,8 +152,9 @@ class Api extends Controller
 		if ($this->user->get_password() != $password)
 		{
 			echo json_encode(array('error' => lang('login.failed')));
-			return;
+			return 0;
 		}
+		return 1;
 	}
 	
 	private function username_empty($email)
@@ -157,8 +162,9 @@ class Api extends Controller
 		if (isempty($email)) 
 		{
 			echo json_encode(array('error' => lang('login.email.empty')));
-			return;
+			return 0;
 		}
+		return 1;
 	}
 	
 	private function email_empty($email)
@@ -166,8 +172,9 @@ class Api extends Controller
 		if (isempty($email)) 
 		{
 			echo json_encode(array('error' => lang('login.email.empty')));
-			return;
+			return 0;
 		}
+		return 1;
 	}
 	
 	private function password_empty($password)
@@ -175,8 +182,9 @@ class Api extends Controller
 		if (isempty($password))
 		{
 			echo json_encode(array('error' => lang('login.password.empt')));
-			return;
+			return 0;
 		}
+		return 1;
 	}
 	
 	private function sendemail($user, $edit = 0)
