@@ -1,6 +1,6 @@
 <?php
 
-class Application extends Controller
+class Api extends Controller
 {
 	private $usermodel;
 	private $mailerdecorator;
