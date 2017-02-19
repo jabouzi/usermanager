@@ -25,8 +25,8 @@ class Api extends Controller
 	public function password($email)
 	{
 		$this->user = $this->usermodel->get_user($email);
-		$this->email_empty();
-		$this->check_user();
+		$this->email_empty($email);
+		$this->check_user($email);
 		$password = substr(str_shuffle(strtolower(sha1(rand() . time() . $this->user->get_email()))),0, 8);
 		$this->user->set_password($password);
 		echo json_encode($user->__toArray());
