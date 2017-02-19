@@ -67,7 +67,7 @@ class Api extends Controller
 		}
 	}
 
-	public function edit($id, $username, $password, $email, $first_name, $last_name)
+	public function edit($username, $password, $email, $first_name, $last_name)
 	{
 		if ($this->usermodel->email_exists($email))
 		{
