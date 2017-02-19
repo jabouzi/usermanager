@@ -99,9 +99,9 @@ class Api extends Controller
 	
 	public function login($email, $password)
 	{
-		if $this->username_empty($email);
-		else if $this->password_empty($password);
-		else $this->check_login($email, $password);
+		if ($this->username_empty($email));
+		else if ($this->password_empty($password));
+		else if ($this->check_login($email, $password));
 		else { 
 			echo json_encode(array('success' => lang('login.login'))); 
 		}
