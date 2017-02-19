@@ -12,6 +12,11 @@ class Api extends Controller
 		$this->usermodel = new usermodel();
 		$this->mailerdecorator = new mailerdecorator();
 	}
+	
+	public function index()
+	{
+		echo 'Usermanager api';
+	}
 
 	public function password($email)
 	{
