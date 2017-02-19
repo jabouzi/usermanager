@@ -101,7 +101,7 @@ class Api extends Controller
 	{
 		$this->username_empty($email);
 		$this->password_empty($password);
-		$this->check_login($email);
+		$this->check_login($email, $password);
 		echo json_encode(array('success' => lang('login.login')));
 	}
 	
@@ -110,12 +110,12 @@ class Api extends Controller
 		echo json_encode(array('success' => lang('login.logout')));
 	}
 
-	private function check_login($email)
+	private function check_login($email, $password)
 	{
 		$this->user = $this->usermodel->get_user($email);
 		$this->user_inexistant();
 		$this->user_inactive();
-		$this->user_worg_password();
+		$this->user_worg_password($password);
 	}
 	
 	private function check_user($email)
@@ -130,8 +130,6 @@ class Api extends Controller
 		if (!$this->user->get_id())
 		{
 			echo json_encode(array('success' => lang('login.account.not.exists')));
-			$_SESSION['message'] = lang('login.account.not.exists');
-			redirect('login');
 		}
 	}
 	
@@ -139,8 +137,7 @@ class Api extends Controller
 	{
 		if (!$this->user->get_active())
 		{
-			$_SESSION['message'] = lang('login.account.nonactive');
-			redirect('login');
+			echo json_encode(array('success' => lang('login.account.nonactive')));
 		}
 	}
 	
@@ -148,8 +145,7 @@ class Api extends Controller
 	{
 		if ($this->user->get_password() != $password)
 		{
-			$_SESSION['message'] = lang('login.failed');
-			redirect('login');
+			echo json_encode(array('success' => lang('login.failed')));
 		}
 	}
 	
@@ -157,7 +153,7 @@ class Api extends Controller
 	{
 		if (isempty($email)) 
 		{
-			$_SESSION['message'] = lang('login.email.empty');
+			echo json_encode(array('success' => lang('login.email.empty')));
 		}
 	}
 	
@@ -165,7 +161,7 @@ class Api extends Controller
 	{
 		if (isempty($email)) 
 		{
-			$_SESSION['message'] = lang('login.email.empty');
+			echo json_encode(array('success' => lang('login.email.empty')));
 		}
 	}
 	
@@ -173,7 +169,7 @@ class Api extends Controller
 	{
 		if (isempty($password))
 		{
-			$_SESSION['message'] = lang('login.password.empty');
+			echo json_encode(array('success' => lang('login.password.empt')));
 		}
 	}
 	
