@@ -24,8 +24,11 @@ class Phplog
 
 	function save($logAction, $logText)
 	{
-		$args = array(':user' => print_r($_SESSION['user'], true), ':action' => $logAction, ':data' => print_r($logText, true));
-		$query = "INSERT INTO log (id, user, action, data) VALUES('', :user, :action, :data)";
-		$insert = $this->db->query($query, $args);
+		if (isset($_SESSION['user'])) 
+		{
+			$args = array(':user' => print_r($_SESSION['user'], true), ':action' => $logAction, ':data' => print_r($logText, true));
+			$query = "INSERT INTO log (id, user, action, data) VALUES('', :user, :action, :data)";
+			$insert = $this->db->query($query, $args);
+		}
 	}
 }
