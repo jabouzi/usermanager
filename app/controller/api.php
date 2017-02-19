@@ -4,6 +4,7 @@ class Api extends Controller
 {
 	private $usermodel;
 	private $mailerdecorator;
+	private $encrypt;
 	const EDIT = 1;
 	const ADD = 0;
 
@@ -11,6 +12,7 @@ class Api extends Controller
 	{
 		$this->usermodel = new usermodel();
 		$this->mailerdecorator = new mailerdecorator();
+		$this->encrypt = new encryption();
 	}
 	
 	public function index()
