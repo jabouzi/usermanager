@@ -58,7 +58,7 @@ class Application extends Controller
 				'active' => 1
 			);
 			$this->usermodel->add_user($user);
-			echo json_encode(array('success' => lang('account.user.added'));
+			echo json_encode(array('success' => lang('account.user.added')));
 		}
 	}
 
