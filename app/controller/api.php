@@ -70,9 +70,9 @@ class Api extends Controller
 
 	public function edit($email, $password, $first_name, $last_name)
 	{
-		if ($this->usermodel->email_exists($email))
+		if (!$this->usermodel->email_exists($email))
 		{
-			echo json_encode(array('error' => lang('account.email.exists')));
+			echo json_encode(array('error' => lang('login.account.not.exists')));
 		}
 		else
 		{
