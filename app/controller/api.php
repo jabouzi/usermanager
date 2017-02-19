@@ -115,9 +115,10 @@ class Api extends Controller
 	private function check_login($email, $password)
 	{
 		$this->user = $this->usermodel->get_user($email);
-		$this->user_inexistant();
-		$this->user_inactive();
-		$this->user_worg_password($password);
+		else if (!$this->user_inexistant()) return;
+		else if (!$this->user_inactive()) return;
+		else if (!$this->user_worg_password($password)) return;
+		else return 1;
 	}
 	
 	private function check_user($email)
