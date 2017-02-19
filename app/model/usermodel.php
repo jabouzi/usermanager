@@ -103,4 +103,11 @@ class Usermodel extends Model
 		$count = $this->db->query($query, $args);
 		return intval($count[0]['count']);
 	}
+	
+	public function geolocation($latitude, $longitude)
+	{
+		$args = array(':latitude' => $latitude, ':longitude' => $longitude);
+		$query = "INSERT INTO geolocation (id, latitude, longitude) VALUES('', :latitude, :longitude)";
+		$insert = $this->db->query($query, $args);
+	}
 }

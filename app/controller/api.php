@@ -111,6 +111,11 @@ class Api extends Controller
 	{
 		echo json_encode(array('success' => lang('login.logout')));
 	}
+	
+	public function geolocation($latitude, $longitude)
+	{
+		$this->usermodel->geolocation($latitude, $longitude)
+	}
 
 	private function check_login($email, $password)
 	{
