@@ -114,7 +114,7 @@ class Api extends Controller
 	
 	public function geolocation($latitude, $longitude)
 	{
-		$this->usermodel->geolocation($latitude, $longitude)
+		$this->usermodel->geolocation($latitude, $longitude);
 	}
 
 	private function check_login($email, $password)
