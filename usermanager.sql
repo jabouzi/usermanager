@@ -113,12 +113,12 @@ UNLOCK TABLES;
 
 -- Dump completed on 2015-09-27 19:08:30
 
-CREATE TABLE `geolocations` (
+CREATE TABLE `geolocation` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `email` varchar(256) NOT NULL,
   `latitude` decimal(11, 8) not null default 0.0,
   `longitude` decimal(11, 8) not null default 0.0,
-  `timsestamp` text COLLATE utf8_unicode_ci NOT NULL,
+  `timsestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   KEY `email_idx` (`email`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
