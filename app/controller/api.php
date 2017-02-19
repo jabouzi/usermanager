@@ -47,7 +47,6 @@ class Api extends Controller
 		if ($this->usermodel->email_exists($email))
 		{
 			echo json_encode(array('error' => lang('account.email.exists')));
-			redirect('application/add');
 		}
 		else if ($this->usermodel->username_exists($email))
 		{
