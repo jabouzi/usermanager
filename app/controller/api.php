@@ -25,12 +25,11 @@ class Api extends Controller
 	public function password($email)
 	{
 		$this->user = $this->usermodel->get_user($email);
-		var_dump($this->user);
 		$this->email_empty($email);
 		$this->check_user($email);
 		$password = substr(str_shuffle(strtolower(sha1(rand() . time() . $this->user->get_email()))),0, 8);
 		$this->user->set_password($password);
-		echo json_encode($user->__toArray());
+		echo json_encode($this->user->__toArray());
 	}
 	
 	public function profile($email)
@@ -103,6 +102,7 @@ class Api extends Controller
 		$this->username_empty($email);
 		$this->password_empty($password);
 		$this->check_login($email);
+		echo json_encode(array('success' => lang('login.login')));
 	}
 	
 	public function logout()
@@ -116,7 +116,6 @@ class Api extends Controller
 		$this->user_inexistant();
 		$this->user_inactive();
 		$this->user_worg_password();
-		$this->set_user_session();
 	}
 	
 	private function check_user($email)
