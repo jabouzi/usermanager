@@ -34,7 +34,9 @@ class Api extends Controller
 	
 	public function profile($email)
 	{
+		$encrypt = new encryption();
 		$user = $this->usermodel->get_user($email);
+		$user->set_password($encrypt->decrypt($user->get_password()))
 		echo json_encode($user->__toArray());
 	}
 
